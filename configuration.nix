@@ -54,7 +54,10 @@
   services.xserver = {
     layout = "us";
     xkbVariant = "";
+    xkbOptions = "caps:escape";
   };
+
+  console.useXkbConfig = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

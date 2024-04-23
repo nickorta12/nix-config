@@ -12,6 +12,7 @@
   ];
 
   home.packages = with pkgs; [
+    alejandra
     neofetch
     fzf
     jq
@@ -55,15 +56,6 @@
     nil
     nixpkgs-fmt
   ];
-
-  programs.git = {
-    enable = true;
-    userName = "Nicholas Orta";
-    userEmail = "nickorta12@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
-  };
 
   programs.starship = {
     enable = true;
