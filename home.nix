@@ -1,9 +1,16 @@
-{ inputs, config, pkgs, ... }:
-
 {
+  inputs,
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   home.username = "norta";
   home.homeDirectory = "/home/norta";
-  
+
+  imports = [
+    ./home
+  ];
+
   home.packages = with pkgs; [
     neofetch
     fzf
@@ -20,7 +27,7 @@
     gawk
     zstd
     gnupg
-    
+
     nix-output-monitor
     glow
     btop
@@ -33,6 +40,20 @@
     ethtool
     pciutils
     usbutils
+    procs
+    hexyl
+    hyperfine
+    bottom
+    just
+    bandwhich
+    lazygit
+    tmux
+    zellij
+    tokei
+    xh
+
+    nil
+    nixpkgs-fmt
   ];
 
   programs.git = {
@@ -81,6 +102,16 @@
         ];
       };
     };
+  };
+
+  programs.vscode = {
+    enable = true;
+    enableUpdateCheck = false;
+    #package = pkgs-unstable.vscode;
+  };
+
+  programs.zoxide = {
+    enable = true;
   };
 
   home.stateVersion = "23.11";
