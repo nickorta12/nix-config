@@ -87,9 +87,10 @@
     profiles = {
       default = {
         extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
-          vimium
           bitwarden
+          raindropio
           ublock-origin
+          vimium
         ];
       };
     };
