@@ -51,10 +51,10 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
-    xkbOptions = "caps:escape";
+    variant = "";
+    options = "caps:escape";
   };
 
   console.useXkbConfig = true;
