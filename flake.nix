@@ -27,7 +27,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.users.norta = import ./home.nix;
+          home-manager.users.norta = import ./home;
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };
