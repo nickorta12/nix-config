@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  pkgs-stable,
   ...
 }: {
   home.username = "norta";
@@ -99,7 +98,6 @@
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;
-    #package = pkgs-unstable.vscode;
   };
 
   programs.zoxide = {

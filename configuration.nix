@@ -87,10 +87,7 @@
     isNormalUser = true;
     description = "Nicholas Orta";
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
-      firefox
-      wezterm
-    ];
+    shell = pkgs.zsh;
   };
 
   # Allow unfree packages
@@ -123,6 +120,18 @@
     enableCompletion = true;
     autosuggestions.enable = true;
   };
+
+  security.sudo.extraRules = [
+    {
+      users = ["norta"];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
