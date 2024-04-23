@@ -51,7 +51,16 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   environment.gnome.excludePackages = with pkgs; [
+    epiphany
+    gnome-connections
+    gnome-tour
     gnome.geary
+    gnome.gnome-calendar
+    gnome.gnome-contacts
+    gnome.gnome-maps
+    gnome.gnome-music
+    gnome.simple-scan
+    snapshot
   ];
 
   environment.etc."current-system-packages".text = let
