@@ -121,6 +121,12 @@
     autosuggestions.enable = true;
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
   security.sudo.extraRules = [
     {
       users = ["norta"];
