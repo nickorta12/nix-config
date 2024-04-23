@@ -10,6 +10,7 @@
     ./git.nix
     ./gui.nix
     ./nvim.nix
+    ./aliases.nix
     ./shell.nix
     ./wezterm
     ./zsh.nix

@@ -60,6 +60,7 @@
     gnome.gnome-maps
     gnome.gnome-music
     gnome.simple-scan
+    gnome.yelp
     snapshot
   ];
 

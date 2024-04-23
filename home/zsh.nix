@@ -6,8 +6,5 @@
     enableVteIntegration = true;
     autocd = true;
     defaultKeymap = "emacs";
-    shellAliases = {
-      g = "git";
-    };
   };
 }
