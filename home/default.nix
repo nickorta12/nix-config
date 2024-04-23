@@ -7,10 +7,10 @@
   home.homeDirectory = "/home/norta";
 
   imports = [
-    ./nvim.nix
     ./git.nix
-    ./shell.nix
+    ./nvim.nix
     ./wezterm
+    ./zsh.nix
   ];
 
   home.packages = with pkgs; [
