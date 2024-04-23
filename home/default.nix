@@ -8,7 +8,9 @@
 
   imports = [
     ./git.nix
+    ./gui.nix
     ./nvim.nix
+    ./shell.nix
     ./wezterm
     ./zsh.nix
   ];

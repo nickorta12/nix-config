@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   # -- CLI Packages --
 
   home.packages = with pkgs; [
