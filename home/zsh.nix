@@ -7,4 +7,16 @@
     autocd = true;
     defaultKeymap = "emacs";
   };
+
+  home.shellAliases = {
+    g = "git";
+    build-conf = "sudo nixos-rebuild switch";
+  };
+
+  # Custom functions
+  programs.zsh.initExtra = ''
+    nrun() {
+      nix run nixpkgs#"$1"
+    }
+  '';
 }
