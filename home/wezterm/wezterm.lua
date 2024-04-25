@@ -23,6 +23,7 @@ wezterm.on("toggle-ligature", function(window, _)
   window:set_config_overrides(overrides)
 end)
 
+config.window_background_opacity = 0.95
 --config.color_scheme = 'One Dark (Gogh)'
 --config.color_scheme = "Raycast_Dark"
 --config.color_scheme = 'Catppuccin Macchiato'
