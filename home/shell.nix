@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   # -- CLI Packages --
   home.shellAliases = {
-    cd = "z"
+    cd = "z";
   };
 
   home.packages = with pkgs; [
