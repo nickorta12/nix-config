@@ -11,6 +11,9 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- Bells are bad
+config.audible_bell = "Disabled"
+
 wezterm.on("toggle-ligature", function(window, _)
   local overrides = window:get_config_overrides() or {}
   if not overrides.harfbuzz_features then

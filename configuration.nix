@@ -11,6 +11,15 @@
     ./hardware-configuration.nix
   ];
 
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-uuid/0c456572-3e2c-4839-8772-326d3133e076";
+    fsType = "ext4";
+    options = [
+      "defaults"
+      "x-gvfs-show"
+    ];
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
