@@ -20,6 +20,7 @@
     gnutar
     hexyl
     hyperfine
+    hub
     iftop
     iotop
     ipcalc
@@ -66,6 +67,15 @@
     ];
     settings = {
       update_check = false;
+    };
+  };
+
+  programs.bat = {
+    enable = true;
+    config = {
+      map-syntax = [
+        "flake.lock:JSON"
+      ];
     };
   };
 
