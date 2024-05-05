@@ -32,7 +32,7 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      systems = ["x86_64-linux" "aarch64-darwin"];
 
       flake = {
         nixosConfigurations.motherbrain = nixpkgs.lib.nixosSystem rec {
@@ -55,7 +55,7 @@
         };
       };
 
-      perSystem = { pkgs, ... }: {
+      perSystem = {pkgs, ...}: {
         packages.rgl = pkgs.writeShellScriptBin "rgl" ''
           ${pkgs.ripgrep}/bin/rg --pretty $@ | ${pkgs.less}/bin/less -FR
         '';

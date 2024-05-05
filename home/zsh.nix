@@ -14,9 +14,13 @@
   };
 
   # Custom functions
-  programs.zsh.initExtra = ''
-    nrun() {
-      nix run nixpkgs#"$1"
-    }
-  '';
+  programs.zsh.initExtra =
+    ''
+      nrun() {
+        nix run nixpkgs#"$1"
+      }
+
+      # -- grml stuff --
+    ''
+    + builtins.readFile ./grml.zsh;
 }
