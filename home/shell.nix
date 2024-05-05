@@ -2,8 +2,6 @@
   # -- CLI Packages --
   home.shellAliases = {
     cd = "z";
-    cdc = "cd ~/code";
-    cdr = "cd ~/repos";
   };
 
   home.packages = with pkgs; [
