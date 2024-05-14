@@ -61,12 +61,20 @@
       ];
     };
     "org/gnome/desktop/wm/keybindings" = {
-      switch-to-workspace-1 = [ "<Control><Alt>1" ];
-      switch-to-workspace-2 = [ "<Control><Alt>2" ];
-      switch-to-workspace-3 = [ "<Control><Alt>3" ];
-      switch-to-workspace-4 = [ "<Control><Alt>4" ];
+      switch-to-workspace-1 = ["<Control><Alt>1"];
+      switch-to-workspace-2 = ["<Control><Alt>2"];
+      switch-to-workspace-3 = ["<Control><Alt>3"];
+      switch-to-workspace-4 = ["<Control><Alt>4"];
       switch-input-source = [];
       switch-input-source-backward = [];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Terminal";
+      command = "wezterm";
+      binding = "<Super>t";
     };
   };
 }
