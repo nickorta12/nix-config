@@ -178,6 +178,12 @@
   };
   services.spice-vdagentd.enable = true;
 
+  services.rustdesk-server = {
+    enable = true;
+    openFirewall = true;
+    relayIP = "192.168.0.10";
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
