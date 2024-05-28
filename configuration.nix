@@ -158,6 +158,7 @@
     duf
     dua
     jq
+    quickemu
 
     # Virtualization
     virt-manager
