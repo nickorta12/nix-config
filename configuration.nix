@@ -20,6 +20,11 @@
     ];
   };
 
+  environment.shellAliases = {
+    sctl = "systemctl";
+    jctl = "journalctl";
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
