@@ -118,6 +118,13 @@
     #media-session.enable = true;
   };
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/norta/nix-config";
+  };
+
   # Gaming settings
   programs.steam = {
     enable = true;
@@ -180,6 +187,7 @@
         ovmf.packages = [pkgs.OVMFFull.fd];
       };
     };
+    podman.enable = true;
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
@@ -210,6 +218,10 @@
       commands = [
         {
           command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = ["NOPASSWD"];
+        }
+        {
+          command = "/run/current-system/sw/bin/nh";
           options = ["NOPASSWD"];
         }
       ];
