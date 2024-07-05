@@ -6,5 +6,6 @@
     # IRC client
     halloy
     thunderbird
+    obsidian
   ];
 }
