@@ -7,5 +7,8 @@
     halloy
     thunderbird
     obsidian
+    # Games
+    lutris
+    heroic
   ];
 }
