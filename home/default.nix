@@ -76,5 +76,8 @@
       command = "wezterm";
       binding = "<Super>t";
     };
+    "/org/gnome/mutter" = {
+      dynamic-workspaces = true;
+    };
   };
 }

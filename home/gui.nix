@@ -10,5 +10,8 @@
     # Games
     lutris
     heroic
+
+    # Gnome
+    gnome.dconf-editor
   ];
 }
