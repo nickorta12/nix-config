@@ -57,6 +57,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-emoji
+    liberation_ttf
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
+
   # Enable ssh
   services.openssh.enable = true;
 
@@ -67,6 +74,8 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.displayManager.gdm.wayland = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  programs.hyprland.enable = true;
 
   environment.gnome.excludePackages = with pkgs; [
     epiphany

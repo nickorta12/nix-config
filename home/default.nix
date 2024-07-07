@@ -10,6 +10,7 @@
   imports = [
     ./git.nix
     ./gui.nix
+    ./hyprland.nix
     ./nvim.nix
     ./shell.nix
     ./wezterm

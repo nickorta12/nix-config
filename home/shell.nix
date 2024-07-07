@@ -49,6 +49,7 @@
   ];
 
   # -- Modules Config --
+  programs.kitty.enable = true;
 
   programs.starship = {
     enable = true;
