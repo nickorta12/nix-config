@@ -106,6 +106,10 @@
 
   console.useXkbConfig = true;
 
+  # Enable mouse stuff
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.wireless.enableGraphical = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

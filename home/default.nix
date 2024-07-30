@@ -44,6 +44,7 @@
     blur-my-shell
     tray-icons-reloaded
     caffeine
+    solaar-extension
   ];
 
   dconf.settings = with lib.hm.gvariant; {
@@ -59,6 +60,7 @@
         "blur-my-shell@aunetx"
         "trayIconsReloaded@selfmade.pl"
         "caffeine@patapon.info"
+        "solaar-extension@sidevesh"
       ];
     };
     "org/gnome/desktop/wm/keybindings" = {
