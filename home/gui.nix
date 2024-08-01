@@ -10,6 +10,7 @@
     # Games
     lutris
     heroic
+    bottles
     planify
 
     # Gnome
