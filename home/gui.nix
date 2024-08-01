@@ -10,6 +10,7 @@
     # Games
     lutris
     heroic
+    planify
 
     # Gnome
     gnome.dconf-editor
