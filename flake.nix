@@ -87,6 +87,13 @@
           }
         ];
       };
+
+      volta = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./nixos/volta/configuration.nix
+        ];
+      };
     };
   };
 }

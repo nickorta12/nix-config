@@ -6,7 +6,7 @@
   imports = [
     ./kexec.nix
   ];
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

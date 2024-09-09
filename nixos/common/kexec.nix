@@ -1,5 +1,4 @@
-{ pkgs }:
-{
+{pkgs, ...}: {
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "reboot-kexec" ''
       cmdline="init=$(readlink -f /nix/var/nix/profiles/system/init) $(cat /nix/var/nix/profiles/system/kernel-params)"
