@@ -17,11 +17,29 @@
 
   networking.networkmanager.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "yes";
+  services = {
+    # Enable the OpenSSH daemon.
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "yes";
+      };
+    };
+
+    # Shell history
+    atuin = {
+      enable = true;
+      host = "0.0.0.0";
+      openFirewall = true;
+      openRegistration = true;
+    };
+
+    # Local dropbox type thing
+    nextcloud = {
+      enable = true;
+      package = pkgs.nextcloud29;
+      adminpassFile = "/etc/nextcloud_password";
+      configureRedis = true;
     };
   };
 

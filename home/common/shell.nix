@@ -2,6 +2,7 @@
   # -- CLI Packages --
   home.shellAliases = {
     cd = "z";
+    g = "git";
   };
 
   home.packages = with pkgs; [
