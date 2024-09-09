@@ -14,6 +14,6 @@
     planify
 
     # Gnome
-    gnome.dconf-editor
+    dconf-editor
   ];
 }

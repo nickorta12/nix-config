@@ -16,10 +16,6 @@
       url = "github:ipetkov/crane";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gclone = {
-      url = "github:nickorta12/gclone";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {
@@ -36,10 +32,24 @@
     homeConfigurations = {
       "norta@motherbrain" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {
+          inherit inputs;
+          host = "motherbrain";
+        };
         modules = [
           ./home
         ];
+
+        "norta@tesla" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs;
+            host = "tesla";
+          };
+          modules = [
+            ./home
+          ];
+        };
       };
     };
 
@@ -47,13 +57,33 @@
       motherbrain = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./configuration.nix
+          ./nixos/motherbrain/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.norta = import ./home;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              host = "motherbrain";
+            };
+          }
+        ];
+      };
+
+      tesla = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./nixos/tesla/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.norta = import ./home;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              host = "tesla";
+            };
           }
         ];
       };

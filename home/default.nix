@@ -8,13 +8,13 @@
   home.homeDirectory = "/home/norta";
 
   imports = [
-    ./git.nix
-    ./gui.nix
-    ./hyprland.nix
-    ./nvim.nix
-    ./shell.nix
-    ./wezterm
-    ./zsh.nix
+    ./common/git.nix
+    ./common/gui.nix
+    ./common/hyprland.nix
+    ./common/nvim.nix
+    ./common/shell.nix
+    ./common/wezterm
+    ./common/zsh.nix
   ];
 
   programs.firefox = {
