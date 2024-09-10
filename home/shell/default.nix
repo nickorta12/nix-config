@@ -1,5 +1,9 @@
 {pkgs, ...}: {
-  # -- CLI Packages --
+  imports = [
+    ./git.nix
+    ./zsh.nix
+  ];
+
   home.shellAliases = {
     cd = "z";
     g = "git";
@@ -48,9 +52,6 @@
     zellij
     zstd
   ];
-
-  # -- Modules Config --
-  programs.kitty.enable = true;
 
   programs.starship = {
     enable = true;

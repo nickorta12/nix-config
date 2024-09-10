@@ -1,51 +1,23 @@
 {
-  inputs,
   pkgs,
   lib,
   ...
 }: {
-  home.username = "norta";
-  home.homeDirectory = "/home/norta";
-
   imports = [
-    ./common/git.nix
-    ./common/gui.nix
-    ./common/hyprland.nix
-    ./common/nvim.nix
-    ./common/shell.nix
-    ./common/wezterm
-    ./common/zsh.nix
+    ./base.nix
   ];
 
-  programs.firefox = {
-    enable = true;
-    profiles = {
-      default = {
-        extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
-          bitwarden
-          raindropio
-          ublock-origin
-          vimium
-        ];
-      };
-    };
-  };
-
-  programs.vscode = {
-    enable = true;
-    enableUpdateCheck = false;
-  };
-
-  home.stateVersion = "23.11";
-
-  programs.home-manager.enable = true;
-
-  home.packages = with pkgs.gnomeExtensions; [
-    blur-my-shell
-    tray-icons-reloaded
-    caffeine
-    solaar-extension
-  ];
+  home.packages = with pkgs.gnomeExtensions;
+    [
+      blur-my-shell
+      tray-icons-reloaded
+      caffeine
+      solaar-extension
+    ]
+    ++ (with pkgs; [
+      bitwarden
+      obsidian
+    ]);
 
   dconf.settings = with lib.hm.gvariant; {
     "org/gnome/desktop/interface" = {

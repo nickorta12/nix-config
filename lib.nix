@@ -34,7 +34,7 @@ in {
         inherit self inputs outputs hostname desktop;
       };
       modules = [
-        "./host/${hostname}"
+        (./. + "/host/${hostname}")
         (mkHome {inherit hostname desktop user system;})
       ];
     };
