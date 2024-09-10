@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     userName = "Nicholas Orta";
@@ -27,4 +27,8 @@
       init.defaultBranch = "main";
     };
   };
+
+  home.packages = with pkgs; [
+    git-crypt
+  ];
 }
