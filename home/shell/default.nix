@@ -82,6 +82,16 @@
     };
   };
 
+  programs.helix = {
+    enable = true;
+    settings = {
+      editor = {
+        line-number = "relative";
+      };
+      theme = "dracula";
+    };
+  };
+
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
