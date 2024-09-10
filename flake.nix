@@ -48,6 +48,7 @@
 
       volta = libx.mkHost {
         hostname = "volta";
+        homeManager = false;
         pkgsInput = nixpkgs;
         desktop = true;
       };
