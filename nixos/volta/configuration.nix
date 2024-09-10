@@ -35,12 +35,15 @@
     };
 
     # Local dropbox type thing
-    nextcloud = {
-      enable = true;
-      package = pkgs.nextcloud29;
-      adminpassFile = "/etc/nextcloud_password";
-      configureRedis = true;
-    };
+    #nextcloud = {
+    #  enable = true;
+    #  hostName = "nextcloud.olivorta.com";
+    #  package = pkgs.nextcloud29;
+    #  configureRedis = true;
+    #  config = {
+    #    adminpassFile = "/etc/nextcloud_password";
+    #  };
+    #};
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,

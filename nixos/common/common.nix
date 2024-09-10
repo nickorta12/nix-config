@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   ...
@@ -11,16 +12,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment = {
-    systemPackages = with pkgs; [
-      fd
-      bat
-      htop
-      ripgrep
-      eza
-      duf
-      dua
-      jq
-    ];
+    systemPackages = [] ++ import "${self}/common/base-packages.nix" {inherit pkgs;};
     shellAliases = {
       sctl = "systemctl";
       jctl = "journalctl";
