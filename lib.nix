@@ -15,7 +15,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        users."${user}" = import ./. + "/host/${hostname}/home.nix";
+        users."${user}" = import (./. + "/host/${hostname}/home.nix");
         extraSpecialArgs = {
           inherit self inputs outputs hostname desktop;
           username = user;
@@ -40,7 +40,7 @@ in {
         [
           (./. + "/host/${hostname}/configuration.nix")
         ]
-        ++ inputs.nixpkgs.lib.optional homeManager (mkHome {inherit hostname desktop user system;});
+        ++ inputs.nixpkgs.lib.optionals homeManager (mkHome {inherit hostname desktop user system;});
     };
 
   forAllSystems = inputs.nixpkgs.lib.genAttrs [

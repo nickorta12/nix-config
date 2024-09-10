@@ -33,7 +33,7 @@
     }
   ];
 
-  services.xserver.videoDrivers = ["nvidia"];
+  #services.xserver.videoDrivers = ["nvidia"];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
