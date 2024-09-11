@@ -16,9 +16,9 @@
     gnome-connections
     gnome-tour
     geary
-    gnome.gnome-contacts
-    gnome.gnome-maps
-    gnome.gnome-music
+    gnome-contacts
+    gnome-maps
+    gnome-music
     simple-scan
     yelp
     snapshot
