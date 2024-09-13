@@ -5,6 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +56,13 @@
         homeManager = false;
         pkgsInput = nixpkgs;
         desktop = true;
+      };
+    };
+
+    darwinConfigurations = {
+      Maxwell = libx.mkDarwin {
+        hostname = "Maxwell";
+        pkgsInput = unstable;
       };
     };
   };
