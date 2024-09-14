@@ -1,6 +1,7 @@
 {
   self,
   config,
+  outputs,
   pkgs,
   ...
 }: {
@@ -8,8 +9,12 @@
     ./kexec.nix
   ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = with outputs.overlays; [
+      unstable-packages
+    ];
+  };
 
   environment = {
     systemPackages = [] ++ import "${self}/common/base-packages.nix" {inherit pkgs;};

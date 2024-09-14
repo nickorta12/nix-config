@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  isLinux,
+  ...
+}: {
   imports = [
     ./git.nix
     ./zsh.nix
@@ -9,49 +14,52 @@
     g = "git";
   };
 
-  home.packages = with pkgs; [
-    alejandra
-    aria2
-    bandwhich
-    bottom
-    btop
-    ethtool
-    file
-    fzf
-    gawk
-    glow
-    gnupg
-    gnused
-    gnutar
-    hexyl
-    hyperfine
-    hub
-    iftop
-    iotop
-    ipcalc
-    jq
-    just
-    lazygit
-    lsof
-    neofetch
-    nil
-    nix-output-monitor
-    nixpkgs-fmt
-    nmap
-    pciutils
-    procs
-    socat
-    strace
-    sysstat
-    tmux
-    tokei
-    tree
-    usbutils
-    which
-    xh
-    zellij
-    zstd
-  ];
+  home.packages = with pkgs;
+    [
+      alejandra
+      aria2
+      bandwhich
+      bottom
+      btop
+      file
+      fzf
+      gawk
+      glow
+      gnupg
+      gnused
+      gnutar
+      hexyl
+      hyperfine
+      hub
+      iftop
+      ipcalc
+      jq
+      just
+      lazygit
+      lsof
+      neofetch
+      nil
+      nix-output-monitor
+      nixpkgs-fmt
+      nmap
+      pciutils
+      procs
+      socat
+      tmux
+      tokei
+      tree
+      which
+      xh
+      zellij
+      zstd
+    ]
+    ++ lib.optionals isLinux [
+      ethtool
+      iotop
+      strace
+      sysstat
+      usbutils
+    ];
 
   programs.starship = {
     enable = true;

@@ -8,14 +8,18 @@
     hostname,
     user,
     desktop ? null,
+    isLinux ? true,
     system,
   }: {
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users."${user}" = import (./. + "/host/${hostname}/home.nix");
+      users."${user}" =
+        if isLinux
+        then import (./. + "/nixos/${hostname}/home.nix")
+        else import (./. + "/darwin/${hostname}/home.nix");
       extraSpecialArgs = {
-        inherit self inputs outputs hostname desktop;
+        inherit self inputs isLinux outputs hostname desktop;
         username = user;
       };
     };
@@ -27,8 +31,8 @@
     system,
   }: [
     inputs.home-manager.nixosModules.home-manager
-    mkHome
-    {inherit hostname user desktop system;}
+    (mkHome
+      {inherit hostname user desktop system;})
   ];
   mkHomeDarwin = {
     hostname,
@@ -36,25 +40,27 @@
     system,
   }: [
     inputs.home-manager.darwinModules.home-manager
-    mkHome
-    {inherit hostname user system;}
+    (mkHome
+      {
+        inherit hostname user system;
+        isLinux = false;
+      })
   ];
 in {
-  mkHost = {
+  mkNixos = {
     hostname,
     homeManager ? true,
-    pkgsInput ? inputs.unstable,
     user ? "norta",
     desktop ? null,
     system ? "x86_64-linux",
   }:
-    pkgsInput.lib.nixosSystem {
+    inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit self inputs outputs hostname desktop;
       };
       modules =
         [
-          (./. + "/host/${hostname}/configuration.nix")
+          (./. + "/nixos/${hostname}/configuration.nix")
         ]
         ++ inputs.nixpkgs.lib.optionals homeManager (mkHomeNixos {inherit hostname desktop user system;});
     };
@@ -62,7 +68,6 @@ in {
   mkDarwin = {
     hostname,
     homeManager ? true,
-    pkgsInput ? inputs.unstable,
     user ? "nicko",
     system ? "aarch64-darwin",
   }:
@@ -72,7 +77,10 @@ in {
       };
       modules =
         [
-          (./. + "/host/${hostname}/configuration.nix")
+          (./. + "/darwin/${hostname}/configuration.nix")
+          {
+            nixpkgs.hostPlatform = system;
+          }
         ]
         ++ inputs.nixpkgs.lib.optionals homeManager (mkHomeDarwin {inherit hostname user system;});
     };

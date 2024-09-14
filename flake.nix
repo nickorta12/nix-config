@@ -11,17 +11,13 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #crane = {
-    #  url = "github:ipetkov/crane";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
   };
 
   outputs = inputs @ {
@@ -41,20 +37,17 @@
     nixosConfigurations = {
       motherbrain = libx.mkHost {
         hostname = "motherbrain";
-        pkgsInput = unstable;
         desktop = true;
       };
 
       tesla = libx.mkHost {
         hostname = "tesla";
-        pkgsInput = unstable;
         desktop = true;
       };
 
       volta = libx.mkHost {
         hostname = "volta";
         homeManager = false;
-        pkgsInput = nixpkgs;
         desktop = true;
       };
     };
@@ -62,8 +55,9 @@
     darwinConfigurations = {
       Maxwell = libx.mkDarwin {
         hostname = "Maxwell";
-        pkgsInput = unstable;
       };
     };
+
+    overlays = import ./overlays {inherit inputs;};
   };
 }
