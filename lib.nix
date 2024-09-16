@@ -20,6 +20,7 @@
         else import (./. + "/darwin/${hostname}/home.nix");
       extraSpecialArgs = {
         inherit self inputs isLinux outputs hostname desktop;
+        isDarwin = !isLinux;
         username = user;
       };
     };
@@ -31,6 +32,7 @@
     system,
   }: [
     inputs.home-manager.nixosModules.home-manager
+    inputs.nixvim.homeManagerModules.nixvim
     (mkHome
       {inherit hostname user desktop system;})
   ];
@@ -40,6 +42,7 @@
     system,
   }: [
     inputs.home-manager.darwinModules.home-manager
+    inputs.nixvim.darwinModules.nixvim
     (mkHome
       {
         inherit hostname user system;

@@ -20,6 +20,7 @@
         nix run nixpkgs#"$1"
       }
 
+      WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
       # -- grml stuff --
     ''
     + builtins.readFile ./grml.zsh;

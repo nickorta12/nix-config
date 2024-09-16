@@ -2,6 +2,7 @@
   pkgs,
   lib,
   isLinux,
+  isDarwin,
   ...
 }: {
   imports = [
@@ -59,6 +60,11 @@
       strace
       sysstat
       usbutils
+    ]
+    ++ lib.optionals isDarwin [
+      coreutils
+      m-cli
+      nixos-rebuild
     ];
 
   programs.starship = {
