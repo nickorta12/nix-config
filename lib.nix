@@ -62,6 +62,9 @@ in {
       modules =
         [
           (./. + "/nixos/${hostname}/configuration.nix")
+          {
+            networking.hostName = hostname;
+          }
         ]
         ++ inputs.nixpkgs.lib.optionals homeManager (mkHomeNixos {inherit hostname desktop user system;});
     };
