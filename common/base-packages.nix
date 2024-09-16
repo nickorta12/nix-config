@@ -12,4 +12,6 @@ with pkgs; [
   just
   ripgrep
   deploy-rs
+  nix-index
+  nix-tree
 ]

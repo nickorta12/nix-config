@@ -22,6 +22,8 @@
       bandwhich
       bottom
       btop
+      deadnix
+      ffmpeg
       file
       fzf
       gawk
@@ -51,6 +53,7 @@
       tree
       which
       xh
+      viddy
       zellij
       zstd
     ]
