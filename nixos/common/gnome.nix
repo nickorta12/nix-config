@@ -15,12 +15,12 @@
     epiphany
     gnome-connections
     gnome-tour
-    geary
-    gnome-contacts
-    gnome-maps
-    gnome-music
-    simple-scan
-    yelp
+    gnome.geary
+    gnome.gnome-contacts
+    gnome.gnome-maps
+    gnome.gnome-music
+    gnome.simple-scan
+    gnome.yelp
     snapshot
   ];
 }

@@ -32,7 +32,6 @@
     system,
   }: [
     inputs.home-manager.nixosModules.home-manager
-    inputs.nixvim.homeManagerModules.nixvim
     (mkHome
       {inherit hostname user desktop system;})
   ];
@@ -42,7 +41,6 @@
     system,
   }: [
     inputs.home-manager.darwinModules.home-manager
-    inputs.nixvim.darwinModules.nixvim
     (mkHome
       {
         inherit hostname user system;

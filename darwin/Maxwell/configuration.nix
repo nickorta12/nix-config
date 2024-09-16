@@ -15,11 +15,11 @@
     systemPackages = [] ++ import "${self}/common/base-packages.nix" {inherit pkgs;};
   };
 
-	system.defaults = {
+  system.defaults = {
     finder = {
       FXPreferredViewStyle = "Nlsv";
     };
-	};
+  };
 
   services.nix-daemon.enable = true;
   nix = {

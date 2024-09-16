@@ -55,8 +55,7 @@
 
       volta = libx.mkNixos {
         hostname = "volta";
-        homeManager = false;
-        desktop = true;
+        desktop = false;
       };
     };
 
@@ -70,10 +69,12 @@
       sshUser = "root";
       hostname = "192.168.0.78";
       remoteBuild = true;
-      
+
       profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.volta;
     };
 
     overlays = import ./overlays {inherit inputs;};
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
   };
 }
