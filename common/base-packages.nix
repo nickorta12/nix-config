@@ -11,4 +11,5 @@ with pkgs; [
   jq
   just
   ripgrep
+  deploy-rs
 ]

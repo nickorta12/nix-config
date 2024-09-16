@@ -73,14 +73,6 @@
   # Enable ssh
   services.openssh.enable = true;
 
-  # A nice listing of files currently installed at /etc/current-system-packages
-  environment.etc."current-system-packages".text = let
-    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-    sortedUnique = builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
-    formatted = builtins.concatStringsSep "\n" sortedUnique;
-  in
-    formatted;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
