@@ -15,6 +15,8 @@
     systemPackages = [] ++ import "${self}/common/base-packages.nix" {inherit pkgs;};
   };
 
+  system.stateVersion = 5;
+
   system.defaults = {
     finder = {
       FXPreferredViewStyle = "Nlsv";
