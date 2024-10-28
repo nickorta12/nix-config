@@ -3,8 +3,13 @@
   lib,
   isLinux,
   isDarwin,
+  inputs
   ...
-}: {
+}: let
+  system = builtins.currentSystem;
+  getPkg = name: inputs.${name}.packages.${system}.default;
+  gclone = getPkg "gclone";
+in {
   imports = [
     ./git.nix
     ./zsh.nix
@@ -56,6 +61,8 @@
       viddy
       zellij
       zstd
+      # Custom stuff
+      gclone
     ]
     ++ lib.optionals isLinux [
       ethtool

@@ -28,6 +28,14 @@
       url = "github:ryanccn/morlana";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nh = {
+      url = "github:ToyVo/nh_darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    gclone = {
+      url = "github:nickorta12/gclone";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
