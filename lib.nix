@@ -19,7 +19,7 @@
         then import (./. + "/nixos/${hostname}/home.nix")
         else import (./. + "/darwin/${hostname}/home.nix");
       extraSpecialArgs = {
-        inherit self inputs isLinux outputs hostname desktop;
+        inherit self inputs isLinux outputs hostname desktop system;
         isDarwin = !isLinux;
         username = user;
       };

@@ -3,11 +3,11 @@
   lib,
   isLinux,
   isDarwin,
-  inputs
+  inputs,
+  system,
   ...
 }: let
-  system = builtins.currentSystem;
-  getPkg = name: inputs.${name}.packages.${system}.default;
+  getPkg = name: inputs.${name}.defaultPackage.${system};
   gclone = getPkg "gclone";
 in {
   imports = [
