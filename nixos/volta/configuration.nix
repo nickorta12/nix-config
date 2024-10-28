@@ -34,7 +34,7 @@
       openRegistration = true;
     };
 
-		tailscale.enable = true;
+    tailscale.enable = true;
 
     # Local dropbox type thing
     #nextcloud = {
