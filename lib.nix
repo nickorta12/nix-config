@@ -81,6 +81,7 @@ in {
       };
       modules =
         [
+          inputs.nh-darwin.nixDarwinModules.prebuiltin
           (./. + "/darwin/${hostname}/configuration.nix")
           {
             nixpkgs.hostPlatform = system;

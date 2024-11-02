@@ -26,15 +26,18 @@
   };
 
   nix = {
+    package = pkgs.nixVersions.latest;
     settings = {
       experimental-features = ["nix-command" "flakes"];
       auto-optimise-store = true;
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
+        "https://toyvo.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "toyvo.cachix.org-1:s++CG1te6YaS9mjICre0Ybbya2o/S9fZIyDNGiD4UXs="
       ];
       trusted-users = [
         "nicko"
@@ -42,8 +45,14 @@
     };
   };
 
-  programs.zsh = {
-    enable = true;
+  programs = {
+    nh = {
+      enable = true;
+      clean.enable = true;
+    };
+    zsh = {
+      enable = true;
+    };
   };
 
   users.users."nicko" = {

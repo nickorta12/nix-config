@@ -36,6 +36,10 @@
       url = "github:nickorta12/gclone";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nh-darwin = {
+      url = "github:ToyVo/nh_darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
