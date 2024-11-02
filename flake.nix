@@ -52,6 +52,7 @@
     inherit (self) outputs;
     libx = import ./lib.nix {
       inherit self inputs outputs;
+      inherit (nixpkgs) lib;
     };
   in {
     packages = libx.forAllSystems (system: import ./packages nixpkgs.legacyPackages.${system});

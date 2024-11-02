@@ -2,8 +2,22 @@
   self,
   inputs,
   outputs,
+  lib,
   ...
 }: let
+  commonHome = {
+    isLinux,
+    hostname,
+  }: {...}: {
+    imports = [
+      inputs.nixvim.homeManagerModules.nixvim
+      (
+        if isLinux
+        then (./. + "/nixos/${hostname}/home.nix")
+        else (./. + "/darwin/${hostname}/home.nix")
+      )
+    ];
+  };
   mkHome = {
     hostname,
     user,
@@ -14,12 +28,9 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users."${user}" =
-        if isLinux
-        then import (./. + "/nixos/${hostname}/home.nix")
-        else import (./. + "/darwin/${hostname}/home.nix");
+      users."${user}" = commonHome {inherit isLinux hostname;};
       extraSpecialArgs = {
-        inherit self inputs isLinux outputs hostname desktop system;
+        inherit self inputs isLinux outputs hostname desktop system keymap;
         isDarwin = !isLinux;
         username = user;
       };
@@ -47,6 +58,19 @@
         isLinux = false;
       })
   ];
+
+  keymap = {
+    mkKeyBasic = key: action: desc: {
+      inherit key action;
+      options.desc = desc;
+    };
+
+    keysToAttrs = let
+      inherit (lib) listToAttrs map removeAttrs;
+    in list:
+      listToAttrs (map (x: {name = x.key; value = removeAttrs x ["key"];}) list);
+  };
+
 in {
   mkNixos = {
     hostname,

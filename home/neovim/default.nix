@@ -1,19 +1,16 @@
 {...}: {
-  programs.neovim = {
+  imports = [
+    ./config.nix
+    ./plugins.nix
+  ];
+
+  programs.nixvim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    extraConfig = ''
-      set ts=2
-      set sw=2
-      set expandtab
-      set smarttab
-      set smartindent
-      set autoindent
-      set number
-      set relativenumber
-    '';
+
+    performance.byteCompileLua.enable = true;
   };
 }
