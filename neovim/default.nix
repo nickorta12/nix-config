@@ -5,11 +5,11 @@
     ./plugins
   ];
 
-  performance.byteCompileLua.enable = true;
+  # performance.byteCompileLua.enable = true;
 
   files = let
     indent = num: {
-      opts = {
+      localOpts = {
         tabstop = num;
         softtabstop = num;
         shiftwidth = num;
