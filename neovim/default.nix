@@ -1,14 +1,26 @@
 {...}: {
   imports = [
     ./config.nix
-    ./plugins.nix
+    ./keys.nix
+    ./plugins
   ];
 
-  enable = true;
-  defaultEditor = true;
-  viAlias = true;
-  vimAlias = true;
-  vimdiffAlias = true;
-
   performance.byteCompileLua.enable = true;
+
+  files = let
+    indent = num: {
+      opts = {
+        tabstop = num;
+        softtabstop = num;
+        shiftwidth = num;
+      };
+    };
+  in {
+    "ftplugin/lua.lua" = indent 2;
+    "ftplugin/nix.lua" = indent 2;
+    "ftplugin/yaml.lua" = indent 2;
+    "ftplugin/markdown.lua" = {
+      opts.textwidth = 100;
+    };
+  };
 }

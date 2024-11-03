@@ -65,6 +65,12 @@
       options.desc = desc;
     };
 
+    mkKey = mode: key: action: desc:
+      lib.recursiveUpdate (mkKeyBasic key action desc) {
+        inherit mode;
+        options.silent = true;
+      };
+
     keysToAttrs = let
       inherit (lib) listToAttrs map removeAttrs;
     in
