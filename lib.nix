@@ -30,7 +30,7 @@
       useUserPackages = true;
       users."${user}" = commonHome {inherit isLinux hostname;};
       extraSpecialArgs = {
-        inherit self inputs isLinux outputs hostname desktop system keymap;
+        inherit self inputs isLinux outputs hostname desktop system;
         isDarwin = !isLinux;
         username = user;
       };
@@ -67,11 +67,17 @@
 
     keysToAttrs = let
       inherit (lib) listToAttrs map removeAttrs;
-    in list:
-      listToAttrs (map (x: {name = x.key; value = removeAttrs x ["key"];}) list);
+    in
+      list:
+        listToAttrs (map (x: {
+            name = x.key;
+            value = removeAttrs x ["key"];
+          })
+          list);
   };
-
 in {
+  inherit keymap;
+
   mkNixos = {
     hostname,
     homeManager ? true,

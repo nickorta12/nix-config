@@ -24,14 +24,6 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    morlana = {
-      url = "github:ryanccn/morlana";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nh = {
-      url = "github:ToyVo/nh_darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     gclone = {
       url = "github:nickorta12/gclone";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +47,24 @@
       inherit (nixpkgs) lib;
     };
   in {
-    packages = libx.forAllSystems (system: import ./packages nixpkgs.legacyPackages.${system});
+    packages = libx.forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      {
+        neovim = let
+          nixvimLib = inputs.nixvim.lib.${system};
+          nixvim = inputs.nixvim.legacyPackages.${system};
+          nixvimModule = {
+            inherit pkgs;
+            module = import ./neovim;
+            extraSpecialArgs = {
+              inherit (libx) keymap;
+            };
+          };
+        in
+          nixvim.makeNixvimWithModule nixvimModule;
+      }
+      // import ./packages pkgs);
 
     nixosConfigurations = {
       motherbrain = libx.mkNixos {
