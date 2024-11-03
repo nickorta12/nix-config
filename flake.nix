@@ -37,7 +37,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    home-manager,
     deploy-rs,
     ...
   }: let
@@ -52,7 +51,6 @@
     in
       {
         neovim = let
-          nixvimLib = inputs.nixvim.lib.${system};
           nixvim = inputs.nixvim.legacyPackages.${system};
           nixvimModule = {
             inherit pkgs;

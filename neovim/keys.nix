@@ -10,6 +10,8 @@ in {
 
     (kn "<C-d>" "<C-d>zz" "Scroll Down")
     (kn "<C-u>" "<C-u>zz" "Scroll Up")
+
+    (kn "<leader>y" "<cmd>Yazi<cr>" "Open File Browser (Yazi)")
   ];
   plugins = {
     which-key = {
