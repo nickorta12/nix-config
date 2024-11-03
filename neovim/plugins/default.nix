@@ -4,7 +4,6 @@
     ./git.nix
     ./lsp.nix
     ./treesitter.nix
-    ./which-key.nix
   ];
 
   plugins = {

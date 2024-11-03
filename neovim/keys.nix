@@ -1,11 +1,7 @@
 {keymap, ...}: let
   kn = keymap.mkKey "n";
-  gn = key: group: kn key group group;
 in {
   keymaps = [
-    (gn "<leader>s" "+search")
-    (gn "<leader>b" "+buffers")
-
     (kn "<leader>bn" "<cmd>bn<cr>" "Next Buffer")
     (kn "<leader>bp" "<cmd>bp<cr>" "Previous Buffer")
     (kn "<leader>bd" "<cmd>bd<cr>" "Close Buffer")
@@ -15,4 +11,25 @@ in {
     (kn "<C-d>" "<C-d>zz" "Scroll Down")
     (kn "<C-u>" "<C-u>zz" "Scroll Up")
   ];
+  plugins = {
+    which-key = {
+      enable = true;
+      settings = {
+        spec = [
+          {
+            __unkeyed-1 = "<leader>b";
+            group = "Buffers";
+          }
+          {
+            __unkeyed-1 = "<leader>s";
+            group = "Search";
+          }
+          {
+            __unkeyed-1 = "<leader>h";
+            group = "GitGutter";
+          }
+        ];
+      };
+    };
+  };
 }
