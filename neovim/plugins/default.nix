@@ -3,13 +3,13 @@
     ./telescope.nix
     ./git.nix
     ./lsp.nix
+    ./treesitter.nix
+    ./which-key.nix
   ];
 
   plugins = {
     # Reopens files at last edit position
     lastplace.enable = true;
-    # Keybinding memorization help
-    which-key.enable = true;
     # Better comments
     comment.enable = true;
     # Auto make pairs
@@ -22,6 +22,8 @@
     gitgutter.enable = true;
     # Indent guides
     indent-blankline.enable = true;
+    # Better file finder
+    yazi.enable = true;
 
     # Better undo handling
     undotree = {
