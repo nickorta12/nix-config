@@ -59,7 +59,7 @@
       })
   ];
 
-  keymap = {
+  keymap = let
     mkKeyBasic = key: action: desc: {
       inherit key action;
       options.desc = desc;
@@ -80,6 +80,8 @@
             value = removeAttrs x ["key"];
           })
           list);
+  in {
+    inherit mkKey mkKeyBasic keysToAttrs;
   };
 in {
   inherit keymap;
