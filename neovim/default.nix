@@ -5,7 +5,7 @@
     ./plugins
   ];
 
-  # performance.byteCompileLua.enable = true;
+  performance.byteCompileLua.enable = true;
 
   files = let
     indent = num: {
@@ -23,4 +23,20 @@
       opts.textwidth = 100;
     };
   };
+
+  autoCmd = [
+    # Open help in a vertical split
+    {
+      event = "FileType";
+      pattern = "help";
+      command = "wincmd L";
+    }
+
+    # Close Telescope prompt in insert mode by clicking escape
+    {
+      event = ["FileType"];
+      pattern = "TelescopePrompt";
+      command = "inoremap <buffer><silent> <ESC> <ESC>:close!<CR>";
+    }
+  ];
 }
