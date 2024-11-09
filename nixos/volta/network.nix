@@ -83,7 +83,7 @@ in {
             data = "10.25.0.1";
           }
           {
-            name = "name-servers";
+            name = "domain-name-servers";
             data = "${ip}";
           }
         ];
