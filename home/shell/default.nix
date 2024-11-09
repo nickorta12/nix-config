@@ -13,6 +13,7 @@ in {
   imports = [
     ./git.nix
     ./zsh.nix
+    ./fish.nix
   ];
 
   home.shellAliases = {
