@@ -34,6 +34,12 @@
     # DNS blocking
     blocky = {
       enable = true;
+      settings = {
+        upstreams.groups = [
+          "8.8.8.8"
+          "4.4.4.4"
+        ];
+      };
     };
   };
 
