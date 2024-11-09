@@ -98,4 +98,8 @@
     extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
+
+  users.users.root = {
+    shell = pkgs.zsh;
+  };
 }

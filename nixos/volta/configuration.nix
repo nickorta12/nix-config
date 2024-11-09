@@ -36,13 +36,15 @@
       settings = {
         upstreams.groups.default = [
           "8.8.8.8"
-          "4.4.4.4"
+          "8.8.4.4"
         ];
-        blocking.denyLists = {
+        blocking = {
           loading.refreshPeriod = "72h";
-          main = [
-            "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
-          ];
+          denylists = {
+            main = [
+              "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+            ];
+          };
         };
       };
     };

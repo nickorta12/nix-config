@@ -4,8 +4,6 @@ with pkgs; [
   bat
   dua
   duf
-  eza
-  eza
   fd
   htop
   jq
