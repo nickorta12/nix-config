@@ -30,6 +30,11 @@
     };
 
     tailscale.enable = true;
+
+    # DNS blocking
+    blocky = {
+      enable = true;
+    };
   };
 
   virtualisation = {

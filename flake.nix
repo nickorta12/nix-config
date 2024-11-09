@@ -74,6 +74,7 @@
       volta = libx.mkNixos {
         hostname = "volta";
         desktop = false;
+        root = true;
       };
     };
 
@@ -101,9 +102,13 @@
             user = "norta";
             desktop = false;
             system = "x86_64-linux";
+            root = true;
           });
 
-        deployment.targetHost = "192.168.0.78";
+        deployment = {
+          targetHost = "192.168.0.78";
+          buildOnTarget = true;
+        };
         networking.hostName = "volta";
       };
     };

@@ -28,6 +28,7 @@ in {
       bandwhich
       bottom
       btop
+      colmena
       deadnix
       ffmpeg
       file

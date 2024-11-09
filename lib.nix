@@ -23,17 +23,25 @@
     user,
     desktop ? null,
     isLinux ? true,
+    root ? false,
     system,
   }: {
     home-manager = {
+      backupFileExtension = "bak";
       useGlobalPkgs = true;
       useUserPackages = true;
       users."${user}" = commonHome {inherit isLinux hostname;};
       extraSpecialArgs = {
         inherit self inputs isLinux outputs hostname desktop system;
         isDarwin = !isLinux;
-        username = user;
       };
+    } // lib.optionalAttrs root {
+      users.root = ({...}: {
+        imports = [
+          inputs.nixvim.homeManagerModules.nixvim
+          ./nixos/${hostname}/root.nix
+        ];
+      });
     };
   };
   mkHomeNixos = {
@@ -41,10 +49,11 @@
     user,
     desktop,
     system,
+    root ? false,
   }: [
     inputs.home-manager.nixosModules.home-manager
     (mkHome
-      {inherit hostname user desktop system;})
+      {inherit hostname user desktop system root;})
   ];
   mkHomeDarwin = {
     hostname,
@@ -92,6 +101,7 @@ in {
     user ? "norta",
     desktop ? null,
     system ? "x86_64-linux",
+    root ? false,
   }:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -104,7 +114,7 @@ in {
             networking.hostName = hostname;
           }
         ]
-        ++ inputs.nixpkgs.lib.optionals homeManager (mkHomeNixos {inherit hostname desktop user system;});
+        ++ inputs.nixpkgs.lib.optionals homeManager (mkHomeNixos {inherit hostname desktop user system root;});
     };
 
   mkDarwin = {
