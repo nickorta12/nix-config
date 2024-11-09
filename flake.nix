@@ -21,10 +21,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     gclone = {
       url = "github:nickorta12/gclone";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,7 +34,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    deploy-rs,
     ...
   }: let
     inherit (self) outputs;
@@ -88,16 +83,39 @@
       };
     };
 
-    deploy.nodes.volta = {
-      sshUser = "root";
-      hostname = "192.168.0.78";
-      remoteBuild = true;
+    colmena = {
+      meta = {
+        nixpkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+        specialArgs = {
+          inherit self inputs outputs;
+        };
+      };
 
-      profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.volta;
+      volta = {
+        imports =
+          [
+            ./nixos/volta/configuration.nix
+          ]
+          ++ (libx.mkHomeNixos {
+            hostname = "volta";
+            user = "norta";
+            desktop = false;
+            system = "x86_64-linux";
+          });
+
+        deployment.targetHost = "192.168.0.78";
+        networking.hostName = "volta";
+      };
     };
 
-    overlays = import ./overlays {inherit inputs;};
+    # deploy.nodes.volta = {
+    #   sshUser = "root";
+    #   hostname = "192.168.0.78";
+    #   remoteBuild = true;
+    #
+    #   profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.volta;
+    # };
 
-    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+    overlays = import ./overlays {inherit inputs;};
   };
 }

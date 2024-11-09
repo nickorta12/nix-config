@@ -84,7 +84,7 @@
     inherit mkKey mkKeyBasic keysToAttrs;
   };
 in {
-  inherit keymap;
+  inherit keymap mkHomeNixos;
 
   mkNixos = {
     hostname,
