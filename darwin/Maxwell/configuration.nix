@@ -1,11 +1,13 @@
 {
   self,
   pkgs,
-  outputs,
   ...
 }: {
   nixpkgs = {
     config.allowUnfree = true;
+    overlays = [
+      self.overlays.vte-fix
+    ];
   };
 
   environment = {
@@ -27,9 +29,9 @@
 
   nix = {
     package = pkgs.nixVersions.latest;
+    optimise.automatic = true;
     settings = {
       experimental-features = ["nix-command" "flakes"];
-      auto-optimise-store = true;
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
