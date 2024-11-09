@@ -1,6 +1,5 @@
 {...}: let
   ip = "10.25.0.2";
-
 in {
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = true;
@@ -80,6 +79,16 @@ in {
         rebind-timer = 2000;
         renew-timer = 1000;
         valid-lifetime = 4000;
+        option-data = [
+          {
+            name = "routers";
+            data = "10.25.0.1";
+          }
+          {
+            name = "name-servers";
+            data = "${ip}";
+          }
+        ];
         subnet4 = [
           {
             id = 1;
