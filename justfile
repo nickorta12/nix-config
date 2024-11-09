@@ -8,7 +8,7 @@ update:
     nix flake update
 
 volta-switch:
-    nixos-rebuild switch --build-host root@192.168.0.78 --target-host root@192.168.0.78 --flake .#volta
+    nixos-rebuild switch --build-host root@10.25.0.2 --target-host root@10.25.0.2 --flake .#volta
 
 alias build := nh-build
 alias switch := nh-switch

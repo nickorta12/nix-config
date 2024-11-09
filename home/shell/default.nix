@@ -96,7 +96,7 @@ in {
     ];
     settings = {
       update_check = false;
-      sync_address = "http://192.168.0.78:8888";
+      sync_address = "http://10.25.0.2:8888";
     };
   };
 

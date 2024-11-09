@@ -106,20 +106,12 @@
           });
 
         deployment = {
-          targetHost = "192.168.0.78";
+          targetHost = "10.25.0.2";
           buildOnTarget = true;
         };
         networking.hostName = "volta";
       };
     };
-
-    # deploy.nodes.volta = {
-    #   sshUser = "root";
-    #   hostname = "192.168.0.78";
-    #   remoteBuild = true;
-    #
-    #   profiles.system.path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.volta;
-    # };
 
     overlays = import ./overlays {inherit inputs;};
   };
