@@ -27,27 +27,6 @@
       openFirewall = true;
       openRegistration = true;
     };
-
-    tailscale.enable = true;
-
-    # DNS blocking
-    blocky = {
-      enable = true;
-      settings = {
-        upstreams.groups.default = [
-          "8.8.8.8"
-          "8.8.4.4"
-        ];
-        blocking = {
-          loading.refreshPeriod = "72h";
-          denylists = {
-            main = [
-              "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
-            ];
-          };
-        };
-      };
-    };
   };
 
   virtualisation = {
