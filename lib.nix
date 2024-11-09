@@ -26,23 +26,25 @@
     root ? false,
     system,
   }: {
-    home-manager = {
-      backupFileExtension = "bak";
-      useGlobalPkgs = true;
-      useUserPackages = true;
-      users."${user}" = commonHome {inherit isLinux hostname;};
-      extraSpecialArgs = {
-        inherit self inputs isLinux outputs hostname desktop system;
-        isDarwin = !isLinux;
+    home-manager =
+      {
+        backupFileExtension = "bak";
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users."${user}" = commonHome {inherit isLinux hostname;};
+        extraSpecialArgs = {
+          inherit self inputs isLinux outputs hostname desktop system;
+          isDarwin = !isLinux;
+        };
+      }
+      // lib.optionalAttrs root {
+        users.root = {...}: {
+          imports = [
+            inputs.nixvim.homeManagerModules.nixvim
+            ./nixos/${hostname}/root.nix
+          ];
+        };
       };
-    } // lib.optionalAttrs root {
-      users.root = ({...}: {
-        imports = [
-          inputs.nixvim.homeManagerModules.nixvim
-          ./nixos/${hostname}/root.nix
-        ];
-      });
-    };
   };
   mkHomeNixos = {
     hostname,

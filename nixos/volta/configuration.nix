@@ -35,7 +35,7 @@
     blocky = {
       enable = true;
       settings = {
-        upstreams.groups = [
+        upstreams.groups.default = [
           "8.8.8.8"
           "4.4.4.4"
         ];
