@@ -2,6 +2,7 @@
   imports = [
     ../common/common.nix
     ./hardware-configuration.nix
+    ./network.nix
   ];
 
   # Use the GRUB 2 boot loader.
@@ -9,8 +10,6 @@
     enable = true;
     device = "/dev/sda";
   };
-
-  networking.networkmanager.enable = true;
 
   services = {
     # Enable the OpenSSH daemon.
@@ -39,6 +38,12 @@
           "8.8.8.8"
           "4.4.4.4"
         ];
+        blocking.denyLists = {
+          loading.refreshPeriod = "72h";
+          main = [
+            "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+          ];
+        };
       };
     };
   };
