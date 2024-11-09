@@ -1,7 +1,4 @@
 {
-  config,
-  lib,
-  pkgs,
   ...
 }: {
   imports = [
@@ -35,17 +32,6 @@
     };
 
     tailscale.enable = true;
-
-    # Local dropbox type thing
-    #nextcloud = {
-    #  enable = true;
-    #  hostName = "nextcloud.olivorta.com";
-    #  package = pkgs.nextcloud29;
-    #  configureRedis = true;
-    #  config = {
-    #    adminpassFile = "/etc/nextcloud_password";
-    #  };
-    #};
   };
 
   virtualisation = {
