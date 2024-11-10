@@ -652,11 +652,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730761478,
-        "narHash": "sha256-cj+SBLltfY9q61IFusG9R00elstdxm1NaoUJsHY0KDo=",
+        "lastModified": 1731261009,
+        "narHash": "sha256-KlxD37ubuvByHdKmj0EYn4Hhw55Eza8+810znMrzteQ=",
         "owner": "nickorta12",
         "repo": "gclone",
-        "rev": "365d2f13f3fa358ea456f3e25233cc922a3897ef",
+        "rev": "b539e652b122b4d1ce9a35ebbfcb1e40016f9738",
         "type": "github"
       },
       "original": {

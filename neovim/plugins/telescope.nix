@@ -22,6 +22,7 @@
           (mk "<leader>ss" "builtin" "Search Builtins")
           (mk "<leader>sl" "lsp_document_symbols" "Search LSP Document Symbols")
           (mk "<leader>sL" "lsp_dynamic_workspace_symbols" "Search LSP Workspace Symbols")
+          (mk "<leader>sR" "resume" "Resume previous Search")
         ];
     };
 

@@ -9,7 +9,7 @@
     enable = true;
     nvimRuntime = true;
     configs = true;
-    plugins = true;
+    plugins = false;
   };
 
   files = let
