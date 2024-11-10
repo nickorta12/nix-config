@@ -5,9 +5,7 @@
 }: {
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [
-      self.overlays.vte-fix
-    ];
+    overlays = [];
   };
 
   environment = {
