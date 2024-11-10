@@ -23,6 +23,8 @@
     indent-blankline.enable = true;
     # Better file finder
     yazi.enable = true;
+    # Better vim motions
+    leap.enable = true;
 
     # Better undo handling
     undotree = {

@@ -14,11 +14,16 @@
     lsp-status.enable = true;
     conform-nvim.enable = true;
     rustaceanvim.enable = true;
+    lsp-signature = {
+      enable = true;
+      settings = {
+        toggle_key = "<M-space>";
+      };
+    };
 
     luasnip.enable = true;
     cmp_luasnip.enable = true;
     cmp-nvim-lsp.enable = true;
-    cmp-look.enable = true;
     cmp = {
       enable = true;
       settings = {
@@ -30,14 +35,6 @@
         sources = [
           {name = "nvim_lsp";}
           {name = "luasnip";}
-          {
-            name = "look";
-            keywordLength = 2;
-            option = {
-              convert_case = true;
-              loud = true;
-            };
-          }
           {name = "path";}
           {name = "buffer";}
           {name = "nvim_lua";}
