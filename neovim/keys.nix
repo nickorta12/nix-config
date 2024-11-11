@@ -1,17 +1,26 @@
 {keymap, ...}: let
-  kn = keymap.mkKey "n";
+  kmap = keymap.mkKey "n";
+  imap = keymap.mkKey "i";
+  tmap = keymap.mkKey "t";
 in {
   keymaps = [
-    (kn "<leader>bn" "<cmd>bn<cr>" "Next Buffer")
-    (kn "<leader>bp" "<cmd>bp<cr>" "Previous Buffer")
-    (kn "<leader>bd" "<cmd>bd<cr>" "Close Buffer")
-    (kn "<leader>bD" "<cmd>bd!<cr>" "Force Close Buffer")
-    (kn "<leader>bl" "<cmd>ls<cr>" "List Buffers")
+    (kmap "<leader>bn" "<cmd>bn<cr>" "Next Buffer")
+    (kmap "<leader>bp" "<cmd>bp<cr>" "Previous Buffer")
+    (kmap "<leader>bd" "<cmd>bd<cr>" "Close Buffer")
+    (kmap "<leader>bD" "<cmd>bd!<cr>" "Force Close Buffer")
+    (kmap "<leader>bl" "<cmd>ls<cr>" "List Buffers")
 
-    (kn "<C-d>" "<C-d>zz" "Scroll Down")
-    (kn "<C-u>" "<C-u>zz" "Scroll Up")
+    (kmap "<C-d>" "<C-d>zz" "Scroll Down")
+    (kmap "<C-u>" "<C-u>zz" "Scroll Up")
 
-    (kn "<leader>y" "<cmd>Yazi<cr>" "Open File Browser (Yazi)")
+    (kmap "<leader>y" "<cmd>Yazi<cr>" "Open File Browser (Yazi)")
+
+    (kmap "<leader>;" "mmA;<esc>`m" "Add semicolon")
+    (imap "<C-g>;" "<esc>mmA;<esc>`ma" "Add semicolon")
+    (kmap "<leader>," "mmA,<esc>`m" "Add comma")
+    (kmap "<C-g>," "<esc>mmA,<esc>`ma" "Add comma")
+
+    (tmap "<esc><esc>" "<C-\\><C-n>" "Exit Terminal")
   ];
   plugins = {
     which-key = {

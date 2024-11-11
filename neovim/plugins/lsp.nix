@@ -8,6 +8,9 @@
         };
         pyright.enable = true;
       };
+      capabilities = ''
+        capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+      '';
     };
 
     lspkind.enable = true;
@@ -17,40 +20,53 @@
     lsp-signature = {
       enable = true;
       settings = {
-        toggle_key = "<M-space>";
+        floating_window = false;
+        hint_prefix = "";
+        toggle_key = "<C-s>";
       };
     };
 
     luasnip.enable = true;
-    cmp_luasnip.enable = true;
-    cmp-nvim-lsp.enable = true;
-    cmp = {
+    blink-cmp = {
       enable = true;
       settings = {
-        completion.completeopt = "menu,menuone,noselect,preview";
-        window = {
-          completion.border = "rounded";
-          documentation.border = "rounded";
+        keymap = { 
+          preset = "super-tab"; 
+          "<CR>" = [ "accept" "fallback" ];
         };
-        sources = [
-          {name = "nvim_lsp";}
-          {name = "luasnip";}
-          {name = "path";}
-          {name = "buffer";}
-          {name = "nvim_lua";}
-        ];
-        mapping = {
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-space>" = "cmp.mapping.complete()";
-          "<C-e>" = "cmp.mapping.close()";
-          "<Up>" = "cmp.mapping.select_prev_item()";
-          "<Down>" = "cmp.mapping.select_next_item()";
-          "<C-p>" = "cmp.mapping.select_prev_item()";
-          "<C-n>" = "cmp.mapping.select_next_item()";
-        };
-        snippet.expand = "luasnip";
+        accept.auto_brackets.enable = true;
+        trigger.signature_help.enable = true;
       };
     };
+    # cmp_luasnip.enable = true;
+    # cmp-nvim-lsp.enable = true;
+    # cmp = {
+    #   enable = true;
+    #   settings = {
+    #     completion.completeopt = "menu,menuone,noselect,preview";
+    #     window = {
+    #       completion.border = "rounded";
+    #       documentation.border = "rounded";
+    #     };
+    #     sources = [
+    #       {name = "nvim_lsp";}
+    #       {name = "luasnip";}
+    #       {name = "path";}
+    #       {name = "buffer";}
+    #       {name = "nvim_lua";}
+    #     ];
+    #     mapping = {
+    #       "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+    #       "<C-f>" = "cmp.mapping.scroll_docs(4)";
+    #       "<C-space>" = "cmp.mapping.complete()";
+    #       "<C-e>" = "cmp.mapping.close()";
+    #       "<Up>" = "cmp.mapping.select_prev_item()";
+    #       "<Down>" = "cmp.mapping.select_next_item()";
+    #       "<C-p>" = "cmp.mapping.select_prev_item()";
+    #       "<C-n>" = "cmp.mapping.select_next_item()";
+    #     };
+    #     snippet.expand = "luasnip";
+    #   };
+    # };
   };
 }
