@@ -13,7 +13,6 @@ in {
   imports = [
     ./git.nix
     ./zsh.nix
-    ./fish.nix
     ./ssh.nix
   ];
 
