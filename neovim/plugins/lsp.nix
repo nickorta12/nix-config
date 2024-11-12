@@ -34,6 +34,7 @@
           preset = "super-tab";
           "<CR>" = ["accept" "fallback"];
         };
+        highlight.use_nvim_cmp_as_default = true;
         accept.auto_brackets.enable = true;
         trigger.signature_help.enable = true;
       };

@@ -27,6 +27,16 @@
       openFirewall = true;
       openRegistration = true;
     };
+
+    # Cleanup
+    logrotate = {
+      enable = true;
+      settings = {
+        "/var/log/blocky/*.log" = {
+          frequency = "daily";
+        };
+      };
+    };
   };
 
   virtualisation = {
