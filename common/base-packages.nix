@@ -1,3 +1,4 @@
+# Packages for nixos and nix-darwin (not home-manager)
 {pkgs}:
 with pkgs; [
   alejandra
@@ -9,7 +10,5 @@ with pkgs; [
   jq
   just
   ripgrep
-  deploy-rs
-  nix-index
   nix-tree
 ]

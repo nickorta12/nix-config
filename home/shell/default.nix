@@ -48,6 +48,7 @@ in {
       just
       lazygit
       lsof
+      manix
       neofetch
       nil
       nix-output-monitor

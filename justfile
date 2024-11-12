@@ -7,6 +7,9 @@ nh-switch:
 update:
     nix flake update
 
+deploy:
+    colmena apply
+
 volta-switch:
     nixos-rebuild switch --build-host root@10.25.0.2 --target-host root@10.25.0.2 --flake .#volta
 

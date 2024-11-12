@@ -30,9 +30,9 @@
     blink-cmp = {
       enable = true;
       settings = {
-        keymap = { 
-          preset = "super-tab"; 
-          "<CR>" = [ "accept" "fallback" ];
+        keymap = {
+          preset = "super-tab";
+          "<CR>" = ["accept" "fallback"];
         };
         accept.auto_brackets.enable = true;
         trigger.signature_help.enable = true;
