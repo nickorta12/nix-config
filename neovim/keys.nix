@@ -6,11 +6,15 @@ in {
     (nmap "<leader>bp" ":bp<cr>" "Previous Buffer")
     (nmap "<leader>bd" ":bd<cr>" "Close Buffer")
     (nmap "<leader>bD" ":bd!<cr>" "Force Close Buffer")
+    (nmap "<leader>bO" ":BufferCloseAllButCurrent<cr>" "Close all Other Buffers")
+    (nmap "<leader>bk" ":BufferPick<cr>" "Pick Buffer")
+    (nmap "<leader>bK" ":BufferPickDelete<cr>" "Pick Buffer Delete")
     (nmap "<leader>bl" ":ls<cr>" "List Buffers")
 
     (nmap "<C-d>" "<C-d>zz" "Scroll Down")
     (nmap "<C-u>" "<C-u>zz" "Scroll Up")
 
+    (nmap "<leader>u" ":UndotreeToggle<cr>" "Toggle UndoTree")
     (nmap "<leader>y" ":Yazi<cr>" "Open File Browser (Yazi)")
 
     (nmap "<leader>gg" ":LazyGit<CR>" "Open LazyGit")
