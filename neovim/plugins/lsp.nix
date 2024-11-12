@@ -25,7 +25,7 @@
       settings = {
         formatters_by_ft = {
           nix = ["alejandra"];
-          python = ["ruff"];
+          python = ["ruff_format" "ruff_fix"];
           "_" = [
             "squeeze_blanks"
             "trim_whitespace"
@@ -34,7 +34,8 @@
         };
         formatters = {
           alejandra.command = lib.getExe pkgs.alejandra;
-          ruff.command = "${lib.getExe pkgs.ruff} format";
+          ruff_format.command = lib.getExe pkgs.ruff;
+          ruff_fix.command = lib.getExe pkgs.ruff;
         };
         format_on_save = {
           lsp_format = "fallback";
