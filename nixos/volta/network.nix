@@ -1,15 +1,23 @@
 {...}: let
   ip = "10.25.0.2";
+  dns = [
+    "8.8.8.8"
+    "8.8.4.4"
+  ];
 in {
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = true;
     "net.ipv4.conf.all.forwarding" = true;
   };
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [53];
-    allowedUDPPorts = [53 67];
+  networking = {
+    useDHCP = false;
+    enableIPv6 = false;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [53];
+      allowedUDPPorts = [53 67];
+    };
   };
 
   systemd.network = {
@@ -22,10 +30,7 @@ in {
       gateway = [
         "10.25.0.1"
       ];
-      dns = [
-        "8.8.8.8"
-        "4.4.4.4"
-      ];
+      dns = dns;
     };
   };
   services = {
@@ -35,10 +40,7 @@ in {
     blocky = {
       enable = true;
       settings = {
-        upstreams.groups.default = [
-          "8.8.8.8"
-          "8.8.4.4"
-        ];
+        upstreams.groups.default = dns;
         ports.dns = "${ip}:53";
         blocking = {
           loading.refreshPeriod = "72h";
