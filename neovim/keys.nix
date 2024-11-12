@@ -2,16 +2,21 @@
   inherit (keymap) nmap imap tmap nlua;
 in {
   keymaps = [
-    (nmap "<leader>bn" "<cmd>bn<cr>" "Next Buffer")
-    (nmap "<leader>bp" "<cmd>bp<cr>" "Previous Buffer")
-    (nmap "<leader>bd" "<cmd>bd<cr>" "Close Buffer")
-    (nmap "<leader>bD" "<cmd>bd!<cr>" "Force Close Buffer")
-    (nmap "<leader>bl" "<cmd>ls<cr>" "List Buffers")
+    (nmap "<leader>bn" ":bn<cr>" "Next Buffer")
+    (nmap "<leader>bp" ":bp<cr>" "Previous Buffer")
+    (nmap "<leader>bd" ":bd<cr>" "Close Buffer")
+    (nmap "<leader>bD" ":bd!<cr>" "Force Close Buffer")
+    (nmap "<leader>bl" ":ls<cr>" "List Buffers")
 
     (nmap "<C-d>" "<C-d>zz" "Scroll Down")
     (nmap "<C-u>" "<C-u>zz" "Scroll Up")
 
-    (nmap "<leader>y" "<cmd>Yazi<cr>" "Open File Browser (Yazi)")
+    (nmap "<leader>y" ":Yazi<cr>" "Open File Browser (Yazi)")
+
+    (nmap "<leader>gg" ":LazyGit<CR>" "Open LazyGit")
+    (nmap "<leader>gb" ":Git blame<CR>" "Git Blame")
+    (nmap "<leader>gs" ":Git status<CR>" "Git Status")
+    (nmap "<leader>gd" ":Gitsigns diffthis<CR>" "Git Diff")
 
     (nlua "<leader>f" "require('conform').format()" "Format buffer")
 
@@ -38,6 +43,10 @@ in {
           {
             __unkeyed-1 = "<leader>h";
             group = "GitGutter";
+          }
+          {
+            __unkeyed-1 = "<leader>g";
+            group = "Git";
           }
         ];
       };

@@ -17,8 +17,6 @@
     barbar.enable = true;
     # Better status line
     lualine.enable = true;
-    # Better view of git diff markers
-    gitgutter.enable = true;
     # Indent guides
     indent-blankline.enable = true;
     # Better file finder
