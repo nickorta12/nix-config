@@ -1,10 +1,15 @@
-{...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   plugins = {
     lsp = {
       enable = true;
       servers = {
         nixd = {
           enable = true;
+          settings.formatting.command = ["alejandra"];
         };
         pyright.enable = true;
       };
@@ -15,7 +20,31 @@
 
     lspkind.enable = true;
     lsp-status.enable = true;
-    conform-nvim.enable = true;
+    conform-nvim = {
+      enable = true;
+      settings = {
+        formatters_by_ft = {
+          nix = ["alejandra"];
+          python = ["ruff"];
+          "_" = [
+            "squeeze_blanks"
+            "trim_whitespace"
+            "trim_newlines"
+          ];
+        };
+        formatters = {
+          alejandra.command = lib.getExe pkgs.alejandra;
+          ruff.command = "${lib.getExe pkgs.ruff} format";
+        };
+        format_on_save = {
+          lsp_format = "fallback";
+          timeout_ms = 500;
+        };
+        format_after_save = {
+          lsp_format = "fallback";
+        };
+      };
+    };
     rustaceanvim.enable = true;
     lsp-signature = {
       enable = true;

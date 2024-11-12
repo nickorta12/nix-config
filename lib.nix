@@ -77,8 +77,20 @@
       options.desc = desc;
     };
 
+    mkKeyBasicLua = key: action: desc: {
+      inherit key;
+      action.__raw = "function() ${action} end";
+      options.desc = desc;
+    };
+
     mkKey = mode: key: action: desc:
       lib.recursiveUpdate (mkKeyBasic key action desc) {
+        inherit mode;
+        options.silent = true;
+      };
+
+    mkKeyLua = mode: key: action: desc:
+      lib.recursiveUpdate (mkKeyBasicLua key action desc) {
         inherit mode;
         options.silent = true;
       };
@@ -93,7 +105,13 @@
           })
           list);
   in {
-    inherit mkKey mkKeyBasic keysToAttrs;
+    inherit mkKey mkKeyBasic mkKeyLua mkKeyBasicLua keysToAttrs;
+    nmap = mkKey "n";
+    imap = mkKey "i";
+    tmap = mkKey "t";
+    nlua = mkKeyLua "n";
+    ilua = mkKeyLua "i";
+    tlua = mkKeyLua "t";
   };
 in {
   inherit keymap mkHomeNixos;
