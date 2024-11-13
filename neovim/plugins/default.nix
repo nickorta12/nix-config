@@ -14,7 +14,21 @@
     # Auto make pairs
     nvim-autopairs.enable = true;
     # Nicer tab line
-    barbar.enable = true;
+    barbar = {
+      enable = true;
+      settings = {
+        sidebar_filetypes = {
+          neo-tree = {
+            text = "NeoTree";
+            align = "center";
+          };
+          undotree = {
+            text = "undotree";
+            align = "center";
+          };
+        };
+      };
+    };
     # Better status line
     lualine.enable = true;
     # Indent guides
