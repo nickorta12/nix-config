@@ -14,11 +14,13 @@ in {
 
     (nmap "<leader>tn" ":tabn<cr>" "Next Tab")
     (nmap "<leader>tp" ":tabp<cr>" "Previous Tab")
+    (nmap "<leader>td" ":tabclose<cr>" "Close Tab")
+    (nmap "<leader>tc" ":tabnew<cr>" "New Tab")
 
     (nmap "<C-d>" "<C-d>zz" "Scroll Down")
     (nmap "<C-u>" "<C-u>zz" "Scroll Up")
 
-    (nmap "<leader>e" ":Neotree<cr>" "Show Explorer")
+    (nmap "<leader>e" ":Neotree toggle<cr>" "Show Explorer")
     (nmap "<leader>u" ":UndotreeToggle<cr>" "Toggle UndoTree")
     (nmap "<leader>y" ":Yazi<cr>" "Open File Browser (Yazi)")
 
