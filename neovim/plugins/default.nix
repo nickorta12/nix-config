@@ -20,7 +20,21 @@
     # Indent guides
     indent-blankline.enable = true;
     # Better file finder
-    yazi.enable = true;
+    yazi = {
+      enable = true;
+      settings = {
+        enable_mouse_support = true;
+      };
+    };
+    # Sidebar
+    neo-tree = {
+      enable = true;
+      closeIfLastWindow = false;
+      filesystem = {
+        useLibuvFileWatcher = true;
+        followCurrentFile.enabled = true;
+      };
+    };
     # Better surrounding of characters
     nvim-surround = {
       enable = true;

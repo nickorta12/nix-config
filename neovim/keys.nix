@@ -10,10 +10,12 @@ in {
     (nmap "<leader>bk" ":BufferPick<cr>" "Pick Buffer")
     (nmap "<leader>bK" ":BufferPickDelete<cr>" "Pick Buffer Delete")
     (nmap "<leader>bl" ":ls<cr>" "List Buffers")
+    (nmap "<leader>be" ":Neotree buffers<cr>" "Explore Buffers")
 
     (nmap "<C-d>" "<C-d>zz" "Scroll Down")
     (nmap "<C-u>" "<C-u>zz" "Scroll Up")
 
+    (nmap "<leader>e" ":Neotree<cr>" "Show Explorer")
     (nmap "<leader>u" ":UndotreeToggle<cr>" "Toggle UndoTree")
     (nmap "<leader>y" ":Yazi<cr>" "Open File Browser (Yazi)")
 
