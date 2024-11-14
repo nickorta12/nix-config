@@ -1,8 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{keymap, ...}: let
+  nmap = keymap.mkKeyLua "n";
+in {
   plugins = {
     lsp = {
       enable = true;
@@ -13,9 +11,19 @@
         };
         pyright.enable = true;
       };
-      capabilities = ''
-        capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-      '';
+      capabilities = "capabilities = require('blink.cmp').net_lsp_capabilities(capabilities)";
+      keymaps.extra = [
+        (nmap "K" "vim.lsp.buf.hover()" "Hover")
+        (nmap "gd" "vim.lsp.buf.definition()" "Go to definition")
+        (nmap "gD" "vim.lsp.buf.declaration()" "Go to declaration")
+        (nmap "gi" "vim.lsp.buf.implementation()" "Go to implementation")
+      ];
+      keymaps.lspBuf = {
+        K = "hover";
+        gd = "definition";
+        gD = "declaration";
+        gi = "implementation";
+      };
     };
 
     lspkind.enable = true;
@@ -26,17 +34,20 @@
         formatters_by_ft = {
           nix = ["alejandra"];
           python = ["ruff_format" "ruff_fix"];
+          rust = ["rustfmt"];
           "_" = [
             "squeeze_blanks"
             "trim_whitespace"
             "trim_newlines"
           ];
         };
-        formatters = {
+        /*
+           formatters = {
           alejandra.command = lib.getExe pkgs.alejandra;
           ruff_format.command = lib.getExe pkgs.ruff;
           ruff_fix.command = lib.getExe pkgs.ruff;
         };
+        */
         format_on_save = {
           lsp_format = "fallback";
           timeout_ms = 500;

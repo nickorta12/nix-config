@@ -13,21 +13,23 @@
     comment.enable = true;
     # Auto make pairs
     nvim-autopairs.enable = true;
+    # Keep buffers per tab
+    scope.enable = true;
     # Nicer tab line
     barbar = {
       enable = true;
-      settings = {
-        sidebar_filetypes = {
-          neo-tree = {
-            text = "NeoTree";
-            align = "center";
-          };
-          undotree = {
-            text = "undotree";
-            align = "center";
-          };
-        };
-      };
+      # settings = {
+      #   sidebar_filetypes = {
+      #     neo-tree = {
+      #       text = "NeoTree";
+      #       align = "center";
+      #     };
+      #     undotree = {
+      #       text = "undotree";
+      #       align = "center";
+      #     };
+      #   };
+      # };
     };
     # Better status line
     lualine.enable = true;
