@@ -11,7 +11,7 @@ in {
         };
         pyright.enable = true;
       };
-      capabilities = "capabilities = require('blink.cmp').net_lsp_capabilities(capabilities)";
+      capabilities = "capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)";
       keymaps.extra = [
         (nmap "K" "vim.lsp.buf.hover()" "Hover")
         (nmap "gd" "vim.lsp.buf.definition()" "Go to definition")
