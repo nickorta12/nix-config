@@ -12,6 +12,11 @@
     plugins = false;
   };
 
+  colorschemes.tokyonight = {
+    enable = true;
+    settings.style = "night";
+  };
+
   files = let
     indent = num: {
       localOpts = {

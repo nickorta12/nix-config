@@ -15,21 +15,15 @@
     nvim-autopairs.enable = true;
     # Keep buffers per tab
     scope.enable = true;
+    # Better buffer delete
+    vim-bbye.enable = true;
     # Nicer tab line
-    barbar = {
+    bufferline = {
       enable = true;
-      # settings = {
-      #   sidebar_filetypes = {
-      #     neo-tree = {
-      #       text = "NeoTree";
-      #       align = "center";
-      #     };
-      #     undotree = {
-      #       text = "undotree";
-      #       align = "center";
-      #     };
-      #   };
-      # };
+      settings.options = {
+        diagnostics = "nvim_lsp";
+        separator_style = "slant";
+      };
     };
     # Better status line
     lualine.enable = true;
@@ -50,10 +44,6 @@
         useLibuvFileWatcher = true;
         followCurrentFile.enabled = true;
       };
-    };
-    alpha = {
-      enable = true;
-      theme = "dashboard";
     };
     # Better surrounding of characters
     nvim-surround = {
@@ -80,8 +70,9 @@
     undotree = {
       enable = true;
       settings = {
-        FocusOnToggle = true;
-        HighlightChangedText = true;
+        SetFocusWhenToggle = 1;
+        HighlightChangedText = 1;
+        WindowLayout = 3;
       };
     };
   };

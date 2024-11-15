@@ -2,15 +2,16 @@
   inherit (keymap) nmap imap tmap nlua;
 in {
   keymaps = [
-    (nmap "<leader>bn" ":BufferNext<cr>" "Next Buffer")
-    (nmap "<leader>bp" ":BufferPrevious<cr>" "Previous Buffer")
-    (nmap "<leader>bd" ":BufferClose<cr>" "Close Buffer")
-    (nmap "<leader>bD" ":BufferCloseAllButCurrent<cr>" "Close all Other Buffers")
-    (nmap "<leader>bk" ":BufferPick<cr>" "Pick Buffer")
-    (nmap "<leader>bK" ":BufferPickDelete<cr>" "Pick Buffer Delete")
+    (nmap "<leader>bn" ":bn<cr>" "Next Buffer")
+    (nmap "<leader>bp" ":bp<cr>" "Previous Buffer")
+    (nmap "<A-,>" ":bn<cr>" "Next Buffer")
+    (nmap "<A-.>" ":bp<cr>" "Previous Buffer")
+    (nmap "<leader>bd" ":Bdelete<cr>" "Close Buffer")
+    (nmap "<leader>bw" ":Bwipeout<cr>" "Wipeout Buffers")
+    (nmap "<leader>bD" ":BufferLineCloseOthers<cr>" "Close all Other Buffers")
+    (nmap "<leader>bk" ":BufferLinePick<cr>" "Pick Buffer")
+    (nmap "<leader>bK" ":BufferLinePickClose<cr>" "Pick Buffer Delete")
     (nmap "<leader>bl" ":Neotree buffers<cr>" "List Buffers")
-    (nmap "<A-,>" ":BufferNext<cr>" "Next Buffer")
-    (nmap "<A-.>" ":BufferPrevious<cr>" "Previous Buffer")
 
     (nmap "<leader>tn" ":tabn<cr>" "Next Tab")
     (nmap "<leader>tp" ":tabp<cr>" "Previous Tab")
@@ -38,6 +39,14 @@ in {
     (nmap "<leader>wW" "<C-w>W" "Window Up/Left")
     (nmap "<leader>wt" "<C-w>t" "Window Top-Left")
     (nmap "<leader>wb" "<C-w>b" "Window Bottom-Right")
+    (nmap "<leader>wq" "<C-w>q" "Window Delete")
+
+    (nmap "<leader>xx" ":Trouble diagnostics toggle<cr>" "Diagnostics")
+    (nmap "<leader>xX" ":Trouble diagnostics toggle filter.buf=0<cr>" "Buffer Diagnostics")
+    (nmap "<leader>xs" ":Trouble symbols toggle focus=false<cr>" "Symbols")
+    (nmap "<leader>xl" ":Trouble lsp toggle focus=false win.position=right<cr>" "LSP Definitions / References")
+    (nmap "<leader>xL" ":Trouble loclist toggle<cr>" "Location List")
+    (nmap "<leader>xQ" ":Trouble qflist toggle<cr>" "Quickfix List")
 
     (nlua "<leader>f" "require('conform').format()" "Format buffer")
 
@@ -76,6 +85,14 @@ in {
           {
             __unkeyed-1 = "<leader>t";
             group = "Tab";
+          }
+          {
+            __unkeyed-1 = "<leader>x";
+            group = "Diagnostics";
+          }
+          {
+            __unkeyed-1 = "<leader>v";
+            group = "LSP";
           }
         ];
       };

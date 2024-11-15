@@ -18,6 +18,19 @@ in {
         (nmap "gd" "vim.lsp.buf.definition()" "Go to definition")
         (nmap "gD" "vim.lsp.buf.declaration()" "Go to declaration")
         (nmap "gi" "vim.lsp.buf.implementation()" "Go to implementation")
+        (nmap "go" "vim.lsp.buf.type_definition()" "Go to type definition")
+        (nmap "gr" "vim.lsp.buf.references()" "Go to references")
+        (nmap "gs" "vim.lsp.buf.signature_help()" "Show signature help")
+        (nmap "<F2>" "vim.lsp.buf.rename()" "Rename")
+        (nmap "<F4>" "vim.lsp.buf.code_action()" "Code action")
+
+        (nmap "<leader>vd" "vim.lsp.buf.definition()" "Go to definition")
+        (nmap "<leader>vD" "vim.lsp.buf.declaration()" "Go to declaration")
+        (nmap "<leader>vi" "vim.lsp.buf.implementation()" "Go to implementation")
+        (nmap "<leader>vo" "vim.lsp.buf.type_definition()" "Go to type definition")
+        (nmap "<leader>vr" "vim.lsp.buf.references()" "Go to references")
+        (nmap "<leader>vs" "vim.lsp.buf.signature_help()" "Show signature help")
+        (nmap "<leader>vc" "vim.lsp.buf.code_action()" "Code action")
       ];
     };
 
@@ -75,35 +88,8 @@ in {
         trigger.signature_help.enable = true;
       };
     };
-    # cmp_luasnip.enable = true;
-    # cmp-nvim-lsp.enable = true;
-    # cmp = {
-    #   enable = true;
-    #   settings = {
-    #     completion.completeopt = "menu,menuone,noselect,preview";
-    #     window = {
-    #       completion.border = "rounded";
-    #       documentation.border = "rounded";
-    #     };
-    #     sources = [
-    #       {name = "nvim_lsp";}
-    #       {name = "luasnip";}
-    #       {name = "path";}
-    #       {name = "buffer";}
-    #       {name = "nvim_lua";}
-    #     ];
-    #     mapping = {
-    #       "<C-d>" = "cmp.mapping.scroll_docs(-4)";
-    #       "<C-f>" = "cmp.mapping.scroll_docs(4)";
-    #       "<C-space>" = "cmp.mapping.complete()";
-    #       "<C-e>" = "cmp.mapping.close()";
-    #       "<Up>" = "cmp.mapping.select_prev_item()";
-    #       "<Down>" = "cmp.mapping.select_next_item()";
-    #       "<C-p>" = "cmp.mapping.select_prev_item()";
-    #       "<C-n>" = "cmp.mapping.select_next_item()";
-    #     };
-    #     snippet.expand = "luasnip";
-    #   };
-    # };
+
+    trouble.enable = true;
+    nvim-lightbulb.enable = true;
   };
 }
