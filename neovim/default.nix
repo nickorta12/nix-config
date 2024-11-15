@@ -35,16 +35,14 @@
     "ftplugin/alpha" = {
       localOpts.buflisted = false;
     };
+    "ftplugin/help.vim" = {
+      extraConfigVim = ''
+        wincmd T
+      '';
+    };
   };
 
   autoCmd = [
-    # Open help in a vertical split
-    # {
-    #   event = "FileType";
-    #   pattern = "help";
-    #   command = "wincmd L";
-
-    # Close Telescope prompt in insert mode by clicking escape
     {
       event = ["FileType"];
       pattern = "TelescopePrompt";

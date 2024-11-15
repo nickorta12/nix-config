@@ -75,5 +75,10 @@
         WindowLayout = 3;
       };
     };
+
+    # Fancy ui
+    noice = {
+      enable = true;
+    };
   };
 }
