@@ -20,7 +20,7 @@ in {
         (nmap "gi" "vim.lsp.buf.implementation()" "Go to implementation")
         (nmap "go" "vim.lsp.buf.type_definition()" "Go to type definition")
         (nmap "gr" "vim.lsp.buf.references()" "Go to references")
-        (nmap "gs" "vim.lsp.buf.signature_help()" "Show signature help")
+        (nmap "gS" "vim.lsp.buf.signature_help()" "Show signature help")
         (nmap "<F2>" "vim.lsp.buf.rename()" "Rename")
         (nmap "<F4>" "vim.lsp.buf.code_action()" "Code action")
 

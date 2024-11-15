@@ -76,9 +76,9 @@
       };
     };
 
-    # Fancy ui
-    noice = {
-      enable = true;
-    };
+    # # Fancy ui
+    # noice = {
+    #   enable = true;
+    # };
   };
 }
