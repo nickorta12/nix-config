@@ -51,6 +51,10 @@
         followCurrentFile.enabled = true;
       };
     };
+    alpha = {
+      enable = true;
+      theme = "dashboard";
+    };
     # Better surrounding of characters
     nvim-surround = {
       enable = true;
