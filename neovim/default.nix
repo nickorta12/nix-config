@@ -27,6 +27,9 @@
     "ftplugin/markdown.lua" = {
       opts.textwidth = 100;
     };
+    "ftplugin/alpha" = {
+      localOpts.buflisted = false;
+    };
   };
 
   autoCmd = [
@@ -35,7 +38,6 @@
     #   event = "FileType";
     #   pattern = "help";
     #   command = "wincmd L";
-    # }
 
     # Close Telescope prompt in insert mode by clicking escape
     {

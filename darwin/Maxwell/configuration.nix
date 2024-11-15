@@ -9,9 +9,11 @@
   };
 
   environment = {
-    systemPackages = [
-      pkgs.lima
-    ] ++ import "${self}/common/base-packages.nix" {inherit pkgs;};
+    systemPackages =
+      [
+        pkgs.lima
+      ]
+      ++ import "${self}/common/base-packages.nix" {inherit pkgs;};
   };
 
   system.stateVersion = 5;

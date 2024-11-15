@@ -8,6 +8,7 @@ in {
         nixd = {
           enable = true;
           settings.formatting.command = ["alejandra"];
+          onAttach.function = "client.server_capabilities.semanticTokensProvider = nil";
         };
         pyright.enable = true;
       };
@@ -18,12 +19,6 @@ in {
         (nmap "gD" "vim.lsp.buf.declaration()" "Go to declaration")
         (nmap "gi" "vim.lsp.buf.implementation()" "Go to implementation")
       ];
-      keymaps.lspBuf = {
-        K = "hover";
-        gd = "definition";
-        gD = "declaration";
-        gi = "implementation";
-      };
     };
 
     lspkind.enable = true;
