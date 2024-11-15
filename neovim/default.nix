@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   imports = [
     ./config.nix
     ./keys.nix
@@ -12,9 +12,11 @@
     plugins = false;
   };
 
-  colorschemes.tokyonight = {
-    enable = true;
-    settings.style = "night";
+  colorschemes = lib.mkDefault {
+    tokyonight = {
+      enable = true;
+      settings.style = "night";
+    };
   };
 
   files = let
