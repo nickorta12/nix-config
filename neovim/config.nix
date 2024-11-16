@@ -27,6 +27,6 @@
     softtabstop = 4;
     shiftwidth = 4;
 
-    timeoutlen = 200;
+    timeoutlen = 500;
   };
 }

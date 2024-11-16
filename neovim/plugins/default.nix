@@ -14,17 +14,17 @@
     # Auto make pairs
     nvim-autopairs.enable = true;
     # Keep buffers per tab
-    scope.enable = true;
+    # scope.enable = true;
     # Better buffer delete
     vim-bbye.enable = true;
     # Nicer tab line
-    bufferline = {
-      enable = true;
-      settings.options = {
-        diagnostics = "nvim_lsp";
-        separator_style = "slant";
-      };
-    };
+    # bufferline = {
+    #   enable = true;
+    #   settings.options = {
+    #     diagnostics = "nvim_lsp";
+    #     separator_style = "slant";
+    #   };
+    # };
     # Better status line
     lualine.enable = true;
     # Indent guides

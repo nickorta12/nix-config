@@ -15,7 +15,7 @@ in {
     useDHCP = false;
     firewall = {
       enable = true;
-      allowedTCPPorts = [53];
+      allowedTCPPorts = [53 4000];
       allowedUDPPorts = [53 67];
     };
   };
@@ -41,17 +41,32 @@ in {
       enable = true;
       settings = {
         upstreams.groups.default = dns;
-        ports.dns = "${ip}:53";
+        bootstrapDns = [
+          {upstream = "8.8.8.8";}
+          {upstream = "8.8.4.4";}
+        ];
+        ports = {
+          dns = "${ip}:53";
+          http = 4000;
+        };
         blocking = {
-          loading.refreshPeriod = "72h";
+          loading = {
+            refreshPeriod = "24h";
+            downloads.timeout = "30s";
+          };
           denylists = {
-            main = [
+            StevenBlack = [
               "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+            ];
+          };
+          allowlists = {
+            StevenBlack = [
+              "${./allow-list.txt}"
             ];
           };
           clientGroupsBlock = {
             default = [
-              "main"
+              "StevenBlack"
             ];
           };
         };

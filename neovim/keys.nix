@@ -21,7 +21,8 @@ in {
     (nmap "<C-d>" "<C-d>zz" "Scroll Down")
     (nmap "<C-u>" "<C-u>zz" "Scroll Up")
 
-    (nmap "<leader>e" ":Neotree toggle<cr>" "Show Explorer")
+    (nmap "<leader>e" ":Neotree<cr>" "Show Explorer")
+    (nmap "<leader>E" ":Neotree toggle<cr>" "Toggle Explorer")
     (nmap "<leader>u" ":UndotreeToggle<cr>" "Toggle UndoTree")
     (nmap "<leader>y" ":Yazi<cr>" "Open File Browser (Yazi)")
 
