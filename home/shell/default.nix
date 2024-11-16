@@ -7,7 +7,7 @@
   system,
   ...
 }: let
-  getPkg = name: inputs.${name}.defaultPackage.${system};
+  getPkg = name: inputs.${name}.packages.${system}.default;
   gclone = getPkg "gclone";
 in {
   imports = [

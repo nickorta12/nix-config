@@ -29,6 +29,10 @@
     tailscale.enable = true;
   };
 
+  security = {
+    pam.enableSudoTouchIdAuth = true;
+  };
+
   nix = {
     package = pkgs.nixVersions.latest;
     optimise.automatic = true;
