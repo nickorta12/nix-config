@@ -38,6 +38,19 @@
     };
   };
 
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "nickorta12@gmail.com";
+    certs = {
+      "olivorta.com" = {
+        domain = "*.olivorta.com";
+        # group = "nginx";
+        dnsProvider = "cloudflare";
+        environmentFile = "/var/lib/cloudflare.txt";
+      };
+    };
+  };
+
   virtualisation = {
     docker.enable = true;
   };
