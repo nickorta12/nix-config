@@ -4,6 +4,7 @@ in {
   containers.blocky = let
     ip = "10.25.0.3";
     ipNet = "${ip}/24";
+    dnsmasq = "10.25.0.4";
   in {
     autoStart = true;
     hostBridge = "br0";
@@ -37,6 +38,11 @@ in {
           ports = {
             dns = 53;
             http = 4000;
+          };
+          conditional.mapping = {
+            "olivorta.com" = dnsmasq;
+            "0.25.10.in-addr.arpa" = dnsmasq;
+            "." = dnsmasq;
           };
           blocking = {
             loading = {
