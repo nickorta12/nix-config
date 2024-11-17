@@ -1,4 +1,6 @@
-{
+{pkgs, ...}: let
+  stevenBlack = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
+in {
   containers.blocky = {
     privateNetwork = true;
     autoStart = true;
@@ -39,12 +41,12 @@
             };
             denylists = {
               StevenBlack = [
-                "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts"
+                stevenBlack
               ];
             };
             allowlists = {
               StevenBlack = [
-                "${./allow-list.txt}"
+                "${pkgs.writeText "allow-lists.txt" "s.youtube.com"}"
               ];
             };
             clientGroupsBlock = {

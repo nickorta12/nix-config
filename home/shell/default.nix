@@ -14,6 +14,7 @@ in {
     ./git.nix
     ./zsh.nix
     ./ssh.nix
+    ./scripts
   ];
 
   home.shellAliases = {
