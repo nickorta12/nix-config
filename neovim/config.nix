@@ -19,7 +19,6 @@
 
     termguicolors = true;
     scrolloff = 8;
-    #updatetime = 50;
 
     wrap = false;
 
