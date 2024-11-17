@@ -2,7 +2,7 @@
   imports = [
     ../common/common.nix
     ./hardware-configuration.nix
-    ./network.nix
+    ./network
     ./caddy.nix
   ];
 

@@ -1,24 +1,28 @@
-{pkgs, ...}: let
+let
   stevenBlack = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
 in {
-  containers.blocky = {
-    privateNetwork = true;
+  containers.blocky = let
+    ip = "10.25.0.3";
+    ipNet = "${ip}/24";
+  in {
     autoStart = true;
-    hostAddress = "192.168.100.10";
-    localAddress = "192.168.100.11";
-    config = {lib, ...}: {
-      system.stateVersion = "24.05";
+    hostBridge = "br0";
+    privateNetwork = true;
+    localAddress = ipNet;
+
+    config = {pkgs, ...}: {
+      imports = [./common.nix];
+
       networking = {
         firewall = {
-          enable = true;
           allowedTCPPorts = [53 4000];
           allowedUDPPorts = [53];
         };
-        useHostResolvConf = lib.mkForce false;
       };
       systemd.services.blocky.serviceConfig = {
         LogsDirectory = "blocky";
       };
+
       services.blocky = {
         enable = true;
         settings = {
