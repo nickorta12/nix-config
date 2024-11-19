@@ -10,6 +10,7 @@
         c
         cpp
         json
+        just
         lua
         markdown
         nix
