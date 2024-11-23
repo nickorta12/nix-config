@@ -5,7 +5,7 @@
 }: {
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [];
+    overlays = [(import self.inputs.rust-overlay)];
   };
 
   environment = {
