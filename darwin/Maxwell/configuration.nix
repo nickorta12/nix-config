@@ -33,8 +33,12 @@
     pam.enableSudoTouchIdAuth = true;
   };
 
+  networking.hostName = "Maxwell";
+
   nix = {
-    package = pkgs.nixVersions.latest;
+    # package = pkgs.nixVersions.latest;
+    # Maybe versions post 2.22 might be weird on darwin
+    package = pkgs.nixVersions.nix_2_20;
     optimise.automatic = true;
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -66,7 +70,6 @@
   users.users."nicko" = {
     description = "Nicholas Orta";
     home = "/Users/nicko";
-    #extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
 }
