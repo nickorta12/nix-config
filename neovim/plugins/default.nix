@@ -28,6 +28,8 @@
     lualine.enable = true;
     # Indent guides
     indent-blankline.enable = true;
+    # Edit files in a buffer
+    oil.enable = true;
     # Better file finder
     yazi = {
       enable = true;
