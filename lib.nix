@@ -5,17 +5,10 @@
   lib,
   ...
 }: let
-  commonHome = {
-    isLinux,
-    hostname,
-  }: {...}: {
+  commonHome = {hostname}: {...}: {
     imports = [
       inputs.nixvim.homeManagerModules.nixvim
-      (
-        if isLinux
-        then (./. + "/nixos/${hostname}/home.nix")
-        else (./. + "/darwin/${hostname}/home.nix")
-      )
+      (./. + "/hosts/${hostname}/home.nix")
     ];
   };
   mkHome = {
@@ -31,7 +24,7 @@
         backupFileExtension = "bak";
         useGlobalPkgs = true;
         useUserPackages = true;
-        users."${user}" = commonHome {inherit isLinux hostname;};
+        users."${user}" = commonHome {inherit hostname;};
         extraSpecialArgs = {
           inherit self inputs isLinux outputs hostname desktop system;
           isDarwin = !isLinux;
@@ -42,7 +35,7 @@
           users.root = {...}: {
             imports = [
               inputs.nixvim.homeManagerModules.nixvim
-              ./nixos/${hostname}/root.nix
+              ./hosts/${hostname}/root.nix
             ];
           };
         });
@@ -130,7 +123,7 @@ in {
       };
       modules =
         [
-          (./. + "/nixos/${hostname}/configuration.nix")
+          (./. + "/hosts/${hostname}/configuration.nix")
           {
             networking.hostName = hostname;
           }
@@ -151,7 +144,7 @@ in {
       modules =
         [
           inputs.nh-darwin.nixDarwinModules.prebuiltin
-          (./. + "/darwin/${hostname}/configuration.nix")
+          (./. + "/hosts/${hostname}/configuration.nix")
           {
             nixpkgs.hostPlatform = system;
           }

@@ -108,9 +108,7 @@
 
       volta = {
         imports =
-          [
-            ./nixos/volta/configuration.nix
-          ]
+          [./hosts/volta/configuration.nix]
           ++ (libx.mkHomeNixos {
             hostname = "volta";
             user = "norta";
