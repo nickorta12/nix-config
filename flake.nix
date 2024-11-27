@@ -18,7 +18,16 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        devshell.follows = "";
+        flake-compat.follows = "";
+        git-hooks.follows = "";
+        nix-darwin.follows = "";
+        treefmt-nix.follows = "";
+        nuschtosSearch.follows = "";
+      };
     };
     gclone = {
       url = "github:nickorta12/gclone";
@@ -26,7 +35,10 @@
     };
     nh-darwin = {
       url = "github:ToyVo/nh_darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        devshells.follows = "devshells";
+      };
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";

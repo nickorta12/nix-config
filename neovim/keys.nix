@@ -51,6 +51,9 @@ in {
 
     (nlua "<leader>f" "require('conform').format()" "Format buffer")
 
+    (nmap "<leader>rw" "yiw:s/<C-r>\"/" "Replace word in line")
+    (nmap "<leader>rW" "yiw:%s/<C-r>\"/" "Replace word in file")
+
     (nmap "<leader>;" "mmA;<esc>`m" "Add semicolon")
     (imap "<C-g>;" "<esc>mmA;<esc>`ma" "Add semicolon")
     (nmap "<leader>," "mmA,<esc>`m" "Add comma")
