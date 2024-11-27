@@ -1,4 +1,21 @@
 {pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    bitwarden
+    # Matrix client
+    fractal
+    # IRC client
+    halloy
+    thunderbird
+    obsidian
+    # Games
+    lutris
+    heroic
+    bottles
+    planify
+
+    # Gnome
+    dconf-editor
+  ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
