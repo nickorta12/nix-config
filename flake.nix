@@ -37,7 +37,6 @@
       url = "github:ToyVo/nh_darwin";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        devshells.follows = "devshells";
       };
     };
     rust-overlay = {
