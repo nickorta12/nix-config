@@ -11,6 +11,10 @@
       # Nix tools
       nix-tree
 
+      # Encryption
+      age
+      rage
+
       # General CLI tools
       bat
       dua
