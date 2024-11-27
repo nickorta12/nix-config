@@ -7,7 +7,7 @@
 }: let
   gclone = inputs.gclone.packages.${system}.default;
 in {
-  enviroment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     alejandra
     colmena
     deadnix
