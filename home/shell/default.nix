@@ -81,66 +81,72 @@ in {
       nixos-rebuild
     ];
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    silent = true;
-  };
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-    };
-  };
-
-  programs.atuin = {
-    enable = true;
-    flags = [
-      "--disable-up-arrow"
-    ];
-    settings = {
-      update_check = false;
-      sync_address = "http://10.25.0.2:8888";
-    };
-  };
-
-  programs.bat = {
-    enable = true;
-    config = {
-      map-syntax = [
-        "flake.lock:JSON"
+  programs = {
+    atuin = {
+      enable = true;
+      flags = [
+        "--disable-up-arrow"
       ];
-    };
-  };
-
-  programs.helix = {
-    enable = true;
-    settings = {
-      editor = {
-        line-number = "relative";
+      settings = {
+        update_check = false;
+        sync_address = "http://10.25.0.2:8888";
       };
-      theme = "dracula";
     };
-  };
 
-  programs.eza = {
-    enable = true;
-    enableZshIntegration = true;
-    git = true;
-  };
+    bat = {
+      enable = true;
+      config = {
+        map-syntax = [
+          "flake.lock:JSON"
+        ];
+      };
+    };
 
-  programs.zoxide = {
-    enable = true;
-  };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      silent = true;
+    };
 
-  programs.htop = {
-    enable = true;
-    settings = {
-      show_program_path = 0;
+    eza = {
+      enable = true;
+      enableZshIntegration = true;
+      git = true;
+    };
+
+    helix = {
+      enable = true;
+      settings = {
+        editor = {
+          line-number = "relative";
+        };
+        theme = "dracula";
+      };
+    };
+
+    htop = {
+      enable = true;
+      settings = {
+        show_program_path = 0;
+      };
+    };
+
+    starship = {
+      enable = true;
+      settings = {
+        add_newline = false;
+        aws.disabled = true;
+        gcloud.disabled = true;
+        line_break.disabled = true;
+      };
+    };
+
+    yazi = {
+      enable = true;
+    };
+
+    zoxide = {
+      enable = true;
     };
   };
 }
