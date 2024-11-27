@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ../common/common.nix
+    ../common/packages.nix
+    ../common/nixos
     ./hardware-configuration.nix
     ./network
     ./caddy.nix

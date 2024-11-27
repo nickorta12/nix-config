@@ -120,6 +120,8 @@ in {
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit self inputs outputs hostname desktop;
+        isLinux = true;
+        isDarwin = false;
       };
       modules =
         [
@@ -140,6 +142,8 @@ in {
     inputs.nix-darwin.lib.darwinSystem {
       specialArgs = {
         inherit self inputs outputs hostname;
+        isLinux = false;
+        isDarwin = true;
       };
       modules =
         [

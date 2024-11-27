@@ -1,12 +1,9 @@
 {
-  config,
-  pkgs,
-  ...
-}: {
   imports = [
-    ../common/common.nix
-    ../common/desktop.nix
-    ../common/gnome.nix
+    ../common/packages.nix
+    ../common/dev.nix
+    ../common/nixos
+    ../common/nixos/gnome.nix
     ./hardware-configuration.nix
   ];
 

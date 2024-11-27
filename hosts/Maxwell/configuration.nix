@@ -3,17 +3,20 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ../common/packages.nix
+    ../common/dev.nix
+  ];
+
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [(import self.inputs.rust-overlay)];
   };
 
   environment = {
-    systemPackages =
-      [
-        pkgs.lima
-      ]
-      ++ import "${self}/common/base-packages.nix" {inherit pkgs;};
+    systemPackages = [
+      pkgs.lima
+    ];
   };
 
   system.stateVersion = 5;

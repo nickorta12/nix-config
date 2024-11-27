@@ -1,9 +1,6 @@
-{
-  self,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
+    ../packages.nix
     ./kexec.nix
   ];
 
@@ -12,7 +9,6 @@
   };
 
   environment = {
-    systemPackages = [] ++ import "${self}/common/base-packages.nix" {inherit pkgs;};
     shellAliases = {
       sctl = "systemctl";
       jctl = "journalctl";

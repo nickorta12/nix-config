@@ -3,10 +3,11 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
-    ../common/common.nix
-    ../common/desktop.nix
-    ../common/gaming.nix
-    ../common/gnome.nix
+    ../common/packages.nix
+    ../common/dev.nix
+    ../common/nixos
+    ../common/nixos/gaming.nix
+    ../common/nixos/gnome.nix
     ./hardware-configuration.nix
   ];
 
@@ -28,8 +29,10 @@
   programs.hyprland.enable = true;
 
   # Enable mouse stuff
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
+  hardware.logitech = {
+    wireless.enable = true;
+    wireless.enableGraphical = true;
+  };
 
   services.xserver.videoDrivers = ["amdgpu"];
 

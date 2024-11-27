@@ -1,15 +1,4 @@
 {
-  pkgs,
-  lib,
-  isLinux,
-  isDarwin,
-  inputs,
-  system,
-  ...
-}: let
-  getPkg = name: inputs.${name}.packages.${system}.default;
-  gclone = getPkg "gclone";
-in {
   imports = [
     ./git.nix
     ./zsh.nix
@@ -21,65 +10,6 @@ in {
     cd = "z";
     g = "git";
   };
-
-  home.packages = with pkgs;
-    [
-      alejandra
-      aria2
-      bandwhich
-      bottom
-      btop
-      colmena
-      deadnix
-      ffmpeg
-      file
-      fzf
-      gawk
-      glow
-      gnupg
-      gnused
-      gnutar
-      hexyl
-      hyperfine
-      hub
-      iftop
-      ipcalc
-      jq
-      just
-      lazygit
-      lsof
-      manix
-      neofetch
-      nil
-      nix-output-monitor
-      nixpkgs-fmt
-      nmap
-      pciutils
-      procs
-      socat
-      tmux
-      tokei
-      tree
-      which
-      xh
-      viddy
-      zellij
-      zstd
-      # Custom stuff
-      gclone
-    ]
-    ++ lib.optionals isLinux [
-      ethtool
-      iotop
-      strace
-      sysstat
-      usbutils
-    ]
-    ++ lib.optionals isDarwin [
-      coreutils
-      m-cli
-      nixos-rebuild
-    ];
 
   programs = {
     atuin = {
