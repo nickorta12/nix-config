@@ -1,5 +1,6 @@
 {
   self,
+  lib,
   pkgs,
   ...
 }: {
@@ -10,7 +11,11 @@
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [(import self.inputs.rust-overlay)];
+    overlays =
+      [
+        (import self.inputs.rust-overlay)
+      ]
+      ++ self.overlays;
   };
 
   environment = {
@@ -36,6 +41,15 @@
     pam.enableSudoTouchIdAuth = true;
   };
 
+  # See when this can work
+  # environment.etc."pam.d/sudo_local" = {
+  #   enable = true;
+  #   text = ''
+  #     auth       optional       ${lib.getLib pkgs.pam-reattach}/lib/pam/pam_reattach.so
+  #     auth       sufficient     ${lib.getLib pkgs.pam-watchid}/lib/pam/pam_watchid.so
+  #     auth       sufficient     pam_tid.so
+  #   '';
+  # };
   networking.hostName = "Maxwell";
 
   nix = {

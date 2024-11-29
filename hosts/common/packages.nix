@@ -14,6 +14,7 @@
       # Encryption
       age
       rage
+      sops
 
       # General CLI tools
       bat
