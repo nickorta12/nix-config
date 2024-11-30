@@ -1,6 +1,5 @@
 {
   self,
-  lib,
   pkgs,
   ...
 }: {
@@ -19,8 +18,9 @@
   };
 
   environment = {
-    systemPackages = [
-      pkgs.lima
+    systemPackages = with pkgs; [
+      lima
+      prismlauncher
     ];
   };
 
