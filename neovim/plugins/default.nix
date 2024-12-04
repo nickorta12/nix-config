@@ -65,7 +65,7 @@
     };
 
     # Better vim motions
-    leap.enable = true;
+    flash.enable = true;
 
     # Better undo handling
     undotree = {
