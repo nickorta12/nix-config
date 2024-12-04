@@ -82,6 +82,8 @@
     };
     zsh = {
       enable = true;
+      enableBashCompletion = false;
+      enableGlobalCompInit = false;
     };
   };
 
