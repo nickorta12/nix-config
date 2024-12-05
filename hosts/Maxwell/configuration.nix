@@ -57,10 +57,10 @@
     # package = pkgs.nixVersions.latest;
     # Maybe versions post 2.22 might be weird on darwin
     # Or just use lix for now
-    package = pkgs.lix;
+    package = pkgs.nixVersions.stable;
     optimise.automatic = true;
     settings = {
-      experimental-features = ["nix-command" "flakes" "repl-flake"];
+      experimental-features = ["nix-command" "flakes"];
       substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org"
