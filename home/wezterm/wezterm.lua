@@ -12,7 +12,10 @@ if wezterm.config_builder then
 end
 
 config.front_end = "WebGpu"
+config.webgpu_power_preference = "HighPerformance"
 config.xcursor_theme = "Adwaita"
+config.window_background_opacity = 0.95
+config.enable_wayland = false
 
 wezterm.on("toggle-ligature", function(window, _)
   local overrides = window:get_config_overrides() or {}

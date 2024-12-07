@@ -1,8 +1,4 @@
 {
-  pkgs,
-  config,
-  ...
-}: {
   # Gaming settings
   programs.steam = {
     enable = true;
@@ -10,7 +6,5 @@
     dedicatedServer.openFirewall = true;
   };
   programs.gamemode.enable = true;
-  hardware.opengl = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
 }
