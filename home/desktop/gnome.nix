@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./base.nix
   ];
@@ -13,13 +9,19 @@
       tray-icons-reloaded
       caffeine
       solaar-extension
+      (disable-workspace-animation.override {
+        version = "6";
+        sha256 = "1m4bbhicfk5znnspldky1sapq0vfqrj8dzhyx5jgb882zhydiv9d";
+        metadata = "ewogICJfZ2VuZXJhdGVkIjogIkdlbmVyYXRlZCBieSBTd2VldFRvb3RoLCBkbyBub3QgZWRpdCIsCiAgImRlc2NyaXB0aW9uIjogIkdOT01FIFNoZWxsIDQ1KyBleHRlbnNpb24gdGhhdCBkaXNhYmxlcyB0aGUgd29ya3NwYWNlIGFuaW1hdGlvbiB3aGVuIHN3aXRjaGluZyBiZXR3ZWVuIHdvcmtzcGFjZXMiLAogICJuYW1lIjogIkRpc2FibGUgV29ya3NwYWNlIEFuaW1hdGlvbiIsCiAgInNoZWxsLXZlcnNpb24iOiBbCiAgICAiNDUiLAogICAgIjQ2IiwKICAgICI0NyIKICBdLAogICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL2V0aG5hcnF1ZS9nbm9tZS1kaXNhYmxlLXdvcmtzcGFjZS1hbmltYXRpb24iLAogICJ1dWlkIjogImRpc2FibGUtd29ya3NwYWNlLWFuaW1hdGlvbkBldGhuYXJxdWUiLAogICJ2ZXJzaW9uIjogNgp9";
+      })
     ]
     ++ (with pkgs; [
       bitwarden
       obsidian
+      wl-clipboard
     ]);
 
-  dconf.settings = with lib.hm.gvariant; {
+  dconf.settings = {
     "org/gnome/desktop/interface" = {
       clock-format = "12h";
       color-scheme = "prefer-dark";
@@ -33,6 +35,7 @@
         "trayIconsReloaded@selfmade.pl"
         "caffeine@patapon.info"
         "solaar-extension@sidevesh"
+        "disable-workspace-animation@ethnarque"
       ];
     };
     "org/gnome/desktop/wm/keybindings" = {
@@ -44,12 +47,20 @@
       switch-input-source-backward = [];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"];
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Terminal";
       command = "wezterm";
       binding = "<Super>t";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      name = "Toggle Caffeine";
+      command = "toggle-caffeine";
+      binding = "<Super>c";
     };
     "org/gnome/mutter" = {
       dynamic-workspaces = true;
