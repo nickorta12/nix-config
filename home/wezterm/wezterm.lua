@@ -11,6 +11,9 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.front_end = "WebGpu"
+config.xcursor_theme = "Adwaita"
+
 wezterm.on("toggle-ligature", function(window, _)
   local overrides = window:get_config_overrides() or {}
   if not overrides.harfbuzz_features then
