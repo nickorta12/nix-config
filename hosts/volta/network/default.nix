@@ -21,27 +21,30 @@ in {
     };
   };
 
-  systemd.network = {
-    enable = true;
-    netdevs."10-br0" = {
-      netdevConfig = {
-        Name = "br0";
-        Kind = "bridge";
+  systemd = {
+    network = {
+      enable = true;
+      wait-online.enable = false;
+      netdevs."10-br0" = {
+        netdevConfig = {
+          Name = "br0";
+          Kind = "bridge";
+        };
       };
-    };
-    networks = {
-      "11-br0-en" = {
-        name = "eno*";
-        bridge = ["br0"];
-      };
-      "11-br0" = {
-        name = "br0";
-        address = [
-          "${ip}/24"
-        ];
-        gateway = [
-          "10.25.0.1"
-        ];
+      networks = {
+        "11-br0-en" = {
+          name = "eno*";
+          bridge = ["br0"];
+        };
+        "11-br0" = {
+          name = "br0";
+          address = [
+            "${ip}/24"
+          ];
+          gateway = [
+            "10.25.0.1"
+          ];
+        };
       };
     };
   };
