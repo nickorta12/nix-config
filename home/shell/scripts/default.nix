@@ -13,6 +13,21 @@
     (pkgs.writeShellScriptBin "home-manager-dir" ''
       echo $(nix eval --impure --raw --expr '(builtins.getFlake "${self}").inputs.home-manager.sourceInfo')
     '')
+    (pkgs.writeShellScriptBin "nshell" ''
+      args=()
+      for i in $@; do
+          args+=("nixpkgs#$i")
+      done
+      nix shell "''${args[@]}"
+    '')
+    (pkgs.writeShellScriptBin "nrun" ''
+      pkg="nixpkgs#$1"
+      shift
+      nix run "$pkg" -- $@
+    '')
+    (pkgs.writeShellScriptBin "symlink-to-regular" ''
+      cp --remove-destination "$(readlink "$1")" "$1"
+    '')
   ];
 
   home.shellAliases = {

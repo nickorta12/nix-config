@@ -61,17 +61,17 @@
       };
     };
 
-    starship = {
-      enable = true;
-      settings = {
-        add_newline = false;
-        aws.disabled = true;
-        package.disabled = true;
-        rust.disabled = true;
-        gcloud.disabled = true;
-        line_break.disabled = true;
-      };
-    };
+    # starship = {
+    #   enable = true;
+    #   settings = {
+    #     add_newline = false;
+    #     aws.disabled = true;
+    #     package.disabled = true;
+    #     rust.disabled = true;
+    #     gcloud.disabled = true;
+    #     line_break.disabled = true;
+    #   };
+    # };
 
     yazi = {
       enable = true;
