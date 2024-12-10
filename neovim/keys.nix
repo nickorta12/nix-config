@@ -8,7 +8,7 @@ in {
     (nmap "<A-.>" ":bp<cr>" "Previous Buffer")
     (nmap "<leader>bd" ":Bdelete<cr>" "Close Buffer")
     (nmap "<leader>bw" ":Bwipeout<cr>" "Wipeout Buffers")
-    (nmap "<leader>bD" ":BufferLineCloseOthers<cr>" "Close all Other Buffers")
+    (nmap "<leader>bD" ":%bd|e#<cr>" "Close all Other Buffers")
     (nmap "<leader>bk" ":BufferLinePick<cr>" "Pick Buffer")
     (nmap "<leader>bK" ":BufferLinePickClose<cr>" "Pick Buffer Delete")
     (nmap "<leader>bl" ":Neotree buffers<cr>" "List Buffers")
