@@ -1,25 +1,33 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  gnomeExtensions = with pkgs.gnomeExtensions; [
+    blur-my-shell
+    tray-icons-reloaded
+    caffeine
+    solaar-extension
+    search-light
+    (disable-workspace-animation.override {
+      version = "6";
+      sha256 = "1m4bbhicfk5znnspldky1sapq0vfqrj8dzhyx5jgb882zhydiv9d";
+      metadata = "ewogICJfZ2VuZXJhdGVkIjogIkdlbmVyYXRlZCBieSBTd2VldFRvb3RoLCBkbyBub3QgZWRpdCIsCiAgImRlc2NyaXB0aW9uIjogIkdOT01FIFNoZWxsIDQ1KyBleHRlbnNpb24gdGhhdCBkaXNhYmxlcyB0aGUgd29ya3NwYWNlIGFuaW1hdGlvbiB3aGVuIHN3aXRjaGluZyBiZXR3ZWVuIHdvcmtzcGFjZXMiLAogICJuYW1lIjogIkRpc2FibGUgV29ya3NwYWNlIEFuaW1hdGlvbiIsCiAgInNoZWxsLXZlcnNpb24iOiBbCiAgICAiNDUiLAogICAgIjQ2IiwKICAgICI0NyIKICBdLAogICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL2V0aG5hcnF1ZS9nbm9tZS1kaXNhYmxlLXdvcmtzcGFjZS1hbmltYXRpb24iLAogICJ1dWlkIjogImRpc2FibGUtd29ya3NwYWNlLWFuaW1hdGlvbkBldGhuYXJxdWUiLAogICJ2ZXJzaW9uIjogNgp9";
+    })
+  ];
+  gnomeUuids = lib.map (x: x.extensionUuid) gnomeExtensions;
+in {
   imports = [
     ./base.nix
   ];
 
-  home.packages = with pkgs.gnomeExtensions;
+  home.packages = with pkgs;
     [
-      blur-my-shell
-      tray-icons-reloaded
-      caffeine
-      solaar-extension
-      (disable-workspace-animation.override {
-        version = "6";
-        sha256 = "1m4bbhicfk5znnspldky1sapq0vfqrj8dzhyx5jgb882zhydiv9d";
-        metadata = "ewogICJfZ2VuZXJhdGVkIjogIkdlbmVyYXRlZCBieSBTd2VldFRvb3RoLCBkbyBub3QgZWRpdCIsCiAgImRlc2NyaXB0aW9uIjogIkdOT01FIFNoZWxsIDQ1KyBleHRlbnNpb24gdGhhdCBkaXNhYmxlcyB0aGUgd29ya3NwYWNlIGFuaW1hdGlvbiB3aGVuIHN3aXRjaGluZyBiZXR3ZWVuIHdvcmtzcGFjZXMiLAogICJuYW1lIjogIkRpc2FibGUgV29ya3NwYWNlIEFuaW1hdGlvbiIsCiAgInNoZWxsLXZlcnNpb24iOiBbCiAgICAiNDUiLAogICAgIjQ2IiwKICAgICI0NyIKICBdLAogICJ1cmwiOiAiaHR0cHM6Ly9naXRodWIuY29tL2V0aG5hcnF1ZS9nbm9tZS1kaXNhYmxlLXdvcmtzcGFjZS1hbmltYXRpb24iLAogICJ1dWlkIjogImRpc2FibGUtd29ya3NwYWNlLWFuaW1hdGlvbkBldGhuYXJxdWUiLAogICJ2ZXJzaW9uIjogNgp9";
-      })
-    ]
-    ++ (with pkgs; [
       bitwarden
       obsidian
       wl-clipboard
-    ]);
+    ]
+    ++ gnomeExtensions;
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -30,13 +38,7 @@
       show-extensions-notice = false;
     };
     "org/gnome/shell" = {
-      enabled-extensions = [
-        "blur-my-shell@aunetx"
-        "trayIconsReloaded@selfmade.pl"
-        "caffeine@patapon.info"
-        "solaar-extension@sidevesh"
-        "disable-workspace-animation@ethnarque"
-      ];
+      enabled-extensions = gnomeUuids;
     };
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-1 = ["<Control><Alt>1"];
@@ -67,6 +69,9 @@
     };
     "org/gnome/desktop/input-sources" = {
       xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape"];
+    };
+    "org/gnome/shell/extensions/search-light" = {
+      shortcut-search = ["<Super>space"];
     };
   };
 }
