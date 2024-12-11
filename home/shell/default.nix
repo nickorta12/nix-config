@@ -1,5 +1,6 @@
-{
+{inputs, ...}: {
   imports = [
+    inputs.nix-index-database.hmModules.nix-index
     ./git.nix
     ./zsh.nix
     ./ssh.nix
@@ -59,6 +60,13 @@
       settings = {
         show_program_path = 0;
       };
+    };
+
+    nix-index = {
+      enable = true;
+      enableBashIntegration = false;
+      enableZshIntegration = false;
+      enableFishIntegration = false;
     };
 
     # starship = {

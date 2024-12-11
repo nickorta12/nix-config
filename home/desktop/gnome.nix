@@ -65,5 +65,8 @@
     "org/gnome/mutter" = {
       dynamic-workspaces = true;
     };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = ["terminate:ctrl_alt_bksp" "caps:escape"];
+    };
   };
 }

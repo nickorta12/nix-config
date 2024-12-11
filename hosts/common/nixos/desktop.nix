@@ -35,4 +35,9 @@
     liberation_ttf
     nerd-fonts.fira-code
   ];
+
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {default = ["org.wezfurlong.wezterm.desktop"];};
+  };
 }
