@@ -39,6 +39,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    deskflow
     swayfx
 
     # Virtualization
@@ -66,6 +67,36 @@
     spiceUSBRedirection.enable = true;
   };
   services.spice-vdagentd.enable = true;
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      acl
+      attr
+      bzip2
+      dbus
+      expat
+      fontconfig
+      freetype
+      fuse3
+      icu
+      libnotify
+      libsodium
+      libssh
+      libunwind
+      libusb1
+      libuuid
+      libxcrypt-legacy
+      nspr
+      nss
+      stdenv.cc.cc
+      util-linux
+      wayland
+      zlib
+      zstd
+      libxkbcommon
+    ];
+  };
 
   security.sudo.extraRules = [
     {

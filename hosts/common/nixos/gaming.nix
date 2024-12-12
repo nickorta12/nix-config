@@ -8,6 +8,7 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
     vintagestory
+    graalvm-ce
   ];
 
   programs.gamemode.enable = true;
