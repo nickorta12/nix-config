@@ -135,6 +135,6 @@
       };
     };
 
-    overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays;
   };
 }

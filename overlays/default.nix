@@ -1,4 +1,4 @@
-{...}: [
+{
   # additions
-  (final: prev: import ../packages final)
-]
+  additions = final: prev: import ../packages final;
+}

@@ -1,5 +1,6 @@
 {
   self,
+  lib,
   pkgs,
   ...
 }: {
@@ -14,7 +15,7 @@
       [
         (import self.inputs.rust-overlay)
       ]
-      ++ self.overlays;
+      ++ lib.attrValues self.overlays;
   };
 
   environment = {
