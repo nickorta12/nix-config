@@ -9,6 +9,7 @@
     ../common/nixos/gaming.nix
     ../common/nixos/gnome.nix
     ./hardware-configuration.nix
+    ./logi.nix
   ];
 
   fileSystems."/mnt/games" = {
