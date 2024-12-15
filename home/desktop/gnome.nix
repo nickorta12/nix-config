@@ -7,7 +7,7 @@
     blur-my-shell
     tray-icons-reloaded
     caffeine
-    solaar-extension
+    # solaar-extension
     search-light
     (disable-workspace-animation.override {
       version = "6";

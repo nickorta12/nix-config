@@ -2,13 +2,14 @@
   logidConfig = (pkgs.formats.libconfig {}).generate "logid.cfg" {
     devices = [
       {
-        name = "Wireless Mouse MX Master 3";
+        name = "MX Master 3S";
+        dpi = 1200;
       }
     ];
-    dpi = 1200;
   };
 in {
-  environment.etc."logid.cfg".source = logidConfig;
+  # services.udev.packages = [pkgs.logitech-udev-rules];
+  environment.etc."logid.cfg".source = ./logid.cfg;
   systemd = {
     packages = [pkgs.logiops];
     services.logid = {

@@ -30,10 +30,10 @@
   programs.hyprland.enable = true;
 
   # Enable mouse stuff
-  hardware.logitech = {
-    wireless.enable = true;
-    wireless.enableGraphical = true;
-  };
+  # hardware.logitech = {
+  #   wireless.enable = true;
+  #   wireless.enableGraphical = true;
+  # };
 
   services.xserver.videoDrivers = ["amdgpu"];
 
