@@ -28,6 +28,9 @@
 
   # Custom functions
   programs.zsh.initExtra = ''
+    # bindkey  "^[[H"   beginning-of-line
+    # bindkey  "^[[F"   end-of-line
+    bindkey  "^[[3~"  delete-char
     source "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme"
     nrun() {
       nix run nixpkgs#"$1"
