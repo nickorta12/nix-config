@@ -37,5 +37,7 @@
     nix-repl = "nix repl --expr '{pkgs = import <nixpkgs>{};}'";
     flake-repl = "nix repl --expr 'builtins.getFlake \"${self}\"'";
     jqless = "jq -C | less -R";
+    lg = "lazygit";
+    cdc = "cd ~/code";
   };
 }
