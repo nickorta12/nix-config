@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     bitwarden
-    # Matrix client
+    # Matrix clients
+    element-desktop-wayland
     fractal
     # IRC client
     halloy
@@ -11,10 +12,14 @@
     lutris
     heroic
     bottles
-    planify
+    factoriolab
+    yafc-ce
 
     # Gnome
     dconf-editor
+
+    # Misc
+    planify
   ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
