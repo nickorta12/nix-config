@@ -4,8 +4,12 @@
   lib,
   isDarwin,
   isLinux,
+  system,
+  inputs,
   ...
-}: {
+}: let
+  markitdown = inputs.markitdown.packages.${system}.markitdown;
+in {
   environment.systemPackages = with pkgs;
     [
       # Nix tools
@@ -33,6 +37,7 @@
       iftop
       ipcalc
       jq
+      markitdown
       neofetch
       nmap
       procs
