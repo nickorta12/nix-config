@@ -59,7 +59,7 @@ in {
     (nmap "<leader>," "mmA,<esc>`m" "Add comma")
     (nmap "<C-g>," "<esc>mmA,<esc>`ma" "Add comma")
 
-    (tmap "<esc><esc>" "<C-\\><C-n>" "Exit Terminal")
+    # (tmap "<esc><esc>" "<C-\\><C-n>" "Exit Terminal")
   ];
   plugins = {
     which-key = {
