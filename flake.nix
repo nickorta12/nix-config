@@ -16,19 +16,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        devshell.follows = "";
-        flake-compat.follows = "";
-        git-hooks.follows = "";
-        nix-darwin.follows = "";
-        treefmt-nix.follows = "";
-        nuschtosSearch.follows = "";
-      };
-    };
     gclone = {
       url = "github:nickorta12/gclone";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +42,10 @@
       url = "github:nickorta12/markitdown-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nickvim = {
+      url = "github:nickorta12/nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -71,20 +62,7 @@
     packages = libx.forAllSystems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
     in
-      {
-        neovim = let
-          nixvim = inputs.nixvim.legacyPackages.${system};
-          nixvimModule = {
-            inherit pkgs;
-            module = import ./neovim;
-            extraSpecialArgs = {
-              inherit (libx) keymap;
-            };
-          };
-        in
-          nixvim.makeNixvimWithModule nixvimModule;
-      }
-      // import ./packages pkgs);
+      import ./packages pkgs);
 
     nixosConfigurations = {
       motherbrain = libx.mkNixos {

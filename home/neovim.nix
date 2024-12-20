@@ -1,11 +1,11 @@
 {
-  self,
+  inputs,
   system,
   ...
 }: {
   home = {
     packages = [
-      self.packages.${system}.neovim
+      inputs.nickvim.packages.${system}.default
     ];
     sessionVariables.EDITOR = "nvim";
     shellAliases.vimdiff = "nvim -d";
