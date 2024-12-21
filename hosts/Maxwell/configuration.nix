@@ -20,6 +20,7 @@
 
   environment = {
     systemPackages = with pkgs; [
+      iproute2mac
       devenv
       lima
       prismlauncher
