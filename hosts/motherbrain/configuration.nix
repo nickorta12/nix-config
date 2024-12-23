@@ -35,6 +35,9 @@
   #   wireless.enableGraphical = true;
   # };
 
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
   services.xserver.videoDrivers = ["amdgpu"];
 
   # List packages installed in system profile. To search, run:

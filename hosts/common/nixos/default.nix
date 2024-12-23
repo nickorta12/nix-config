@@ -1,4 +1,5 @@
 {
+  self,
   config,
   pkgs,
   lib,
@@ -12,6 +13,7 @@
 
   nixpkgs = {
     config.allowUnfree = true;
+    overlays = lib.attrValues self.overlays;
   };
 
   environment = {
