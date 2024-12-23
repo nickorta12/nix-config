@@ -20,6 +20,12 @@
       };
     };
 
+    # Media
+    jellyfin = {
+      enable = true;
+      openFirewall = true;
+    };
+
     # Shell history
     atuin = {
       enable = true;
