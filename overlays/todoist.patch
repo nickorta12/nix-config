@@ -1,0 +1,13 @@
+diff --git a/main.go b/main.go
+index 3fc9175..f7b9502 100644
+--- a/main.go
++++ b/main.go
+@@ -317,7 +317,7 @@ func main() {
+ 			Usage:   "Add new project",
+ 			Action:  AddProject,
+ 			Flags: []cli.Flag{
+-				&cli.IntFlag{
++				&cli.StringFlag{
+ 					Name:  "color",
+ 					Usage: "In range 30-49",
+ 				},

@@ -28,6 +28,9 @@
     (pkgs.writeShellScriptBin "symlink-to-regular" ''
       cp --remove-destination "$(readlink "$1")" "$1"
     '')
+    (pkgs.writeShellScriptBin "nix-eval" ''
+      nix eval --impure --expr "with import <nixpkgs> {}; $*"
+    '')
   ];
 
   home.shellAliases = {

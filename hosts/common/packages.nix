@@ -55,6 +55,9 @@ in {
       btop
       htop
       ripgrep
+
+      # Other
+      todoist
     ]
     ++ lib.optionals isLinux [
       ethtool

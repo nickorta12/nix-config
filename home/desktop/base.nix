@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     bitwarden
     obsidian
+    todoist-electron
   ];
 
   programs.firefox = {
