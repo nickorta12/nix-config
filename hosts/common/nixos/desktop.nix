@@ -34,12 +34,27 @@
     pulse.enable = true;
   };
 
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-emoji
-    liberation_ttf
-    nerd-fonts.fira-code
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      corefonts
+      dejavu_fonts
+      font-awesome
+      liberation_ttf
+      noto-fonts
+      noto-fonts-emoji
+      roboto
+
+      nerd-fonts.fira-code
+    ];
+
+    fontconfig = {
+      antialias = true;
+      cache32Bit = true;
+      hinting.enable = true;
+      hinting.autohint = true;
+    };
+  };
 
   xdg.terminal-exec = {
     enable = true;
