@@ -47,6 +47,7 @@ in {
       switch-to-workspace-4 = ["<Control><Alt>4"];
       switch-input-source = [];
       switch-input-source-backward = [];
+      move-to-center = ["<Super>Home"];
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [

@@ -1,3 +1,10 @@
+autoload -U compinit && compinit -u
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '\ee' edit-command-line
+
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
 
@@ -82,15 +89,6 @@ zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 
-# Search path for sudo completion
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
-                                           /usr/local/bin  \
-                                           /usr/sbin       \
-                                           /usr/bin        \
-                                           /sbin           \
-                                           /bin            \
-                                           /usr/X11R6/bin
-
 # provide .. as a completion
 zstyle ':completion:*' special-dirs ..
 
@@ -121,29 +119,21 @@ else
         fi'
 fi
 
-# host completion
-_etc_hosts=()
-_ssh_config_hosts=()
-_ssh_hosts=()
-if [[ -r ~/.ssh/config ]] ; then
-    _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*})
-fi
+# command for process lists, the local web server details and host completion
+zstyle ':completion:*:urls' local 'www' '/var/www/' 'public_html'
 
-if [[ -r ~/.ssh/known_hosts ]] ; then
-    _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*})
-fi
+[[ -r ~/.ssh/config ]] && _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*}) || _ssh_config_hosts=()
+[[ -r ~/.ssh/known_hosts ]] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
+[[ -r /etc/hosts ]] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
 
-if [[ -r /etc/hosts ]] && [[ "$NOETCHOSTS" -eq 0 ]] ; then
-    : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(grep -v '^0\.0\.0\.0\|^127\.0\.0\.1\|^::1 ' /etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}}
-fi
-
-local localname
-localname="$(uname -n)"
 hosts=(
-    "${localname}"
+    $(hostname)
     "$_ssh_config_hosts[@]"
     "$_ssh_hosts[@]"
     "$_etc_hosts[@]"
     localhost
 )
 zstyle ':completion:*:hosts' hosts $hosts
+
+# see upgrade function in this file
+compdef _hosts upgrade
