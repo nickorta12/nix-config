@@ -66,6 +66,7 @@ in {
         listen-address = [
           "10.25.0.2"
         ];
+        address = "/olivorta.com/10.25.0.2";
         domain = "olivorta.com";
         expand-hosts = true;
         dhcp-host = "02:03:ea:84:fb:95,nick-phone";

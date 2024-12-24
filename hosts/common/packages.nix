@@ -4,10 +4,13 @@
   lib,
   isDarwin,
   isLinux,
-  system,
   inputs,
   ...
 }: let
+  system =
+    if isLinux
+    then "x86_64-linux"
+    else "aarch64-darwin";
   markitdown = inputs.markitdown.packages.${system}.markitdown;
 in {
   environment.systemPackages = with pkgs;
