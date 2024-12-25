@@ -2,6 +2,7 @@
   imports = [
     ../common/packages.nix
     ../common/dev.nix
+    ../common/sops.nix
     ../common/nixos
     ../common/nixos/gnome.nix
     ./hardware-configuration.nix

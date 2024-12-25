@@ -84,6 +84,7 @@ in {
           {
             networking.hostName = hostname;
           }
+          inputs.sops-nix.nixosModules.sops
         ]
         ++ inputs.nixpkgs.lib.optionals homeManager (mkHomeNixos {inherit hostname desktop user system root;});
     };
@@ -107,6 +108,7 @@ in {
           {
             nixpkgs.hostPlatform = system;
           }
+          inputs.sops-nix.darwinModules.sops
         ]
         ++ inputs.nixpkgs.lib.optionals homeManager (mkHomeDarwin {inherit hostname user system;});
     };

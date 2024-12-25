@@ -7,6 +7,7 @@
   imports = [
     ../common/packages.nix
     ../common/dev.nix
+    ../common/sops.nix
   ];
 
   nixpkgs = {

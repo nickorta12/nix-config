@@ -5,6 +5,7 @@
   imports = [
     ../common/packages.nix
     ../common/dev.nix
+    ../common/sops.nix
     ../common/nixos
     ../common/nixos/gaming.nix
     ../common/nixos/gnome.nix

@@ -1,11 +1,15 @@
 {pkgs, ...}: {
   imports = [
     ../common/packages.nix
+    ../common/sops.nix
     ../common/nixos
     ./hardware-configuration.nix
     ./network
+    ./services/freshrss.nix
     ./caddy.nix
   ];
+
+  sops.defaultSopsFile = ../../secrets/volta.yaml;
 
   boot.loader.grub = {
     enable = true;
