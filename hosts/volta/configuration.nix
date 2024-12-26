@@ -5,7 +5,7 @@
     ../common/nixos
     ./hardware-configuration.nix
     ./network
-    ./services/freshrss.nix
+    ./services
     ./caddy.nix
   ];
 
@@ -22,11 +22,6 @@
       settings = {
         PermitRootLogin = "yes";
       };
-    };
-
-    # Media
-    jellyfin = {
-      enable = true;
     };
 
     # Shell history
@@ -51,25 +46,6 @@
       enable = true;
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
-
-      virtualHosts."jellyfin.olivorta.com" = {
-        useACMEHost = "olivorta.com";
-        forceSSL = true;
-        extraConfig = ''
-          client_max_body_size 20M;
-        '';
-
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8096";
-          extraConfig = ''
-            proxy_buffering off;
-          '';
-        };
-        locations."/socket" = {
-          proxyPass = "http://127.0.0.1:8096";
-          proxyWebsockets = true;
-        };
-      };
     };
   };
 
@@ -79,6 +55,10 @@
     certs = {
       "olivorta.com" = {
         domain = "*.olivorta.com";
+        extraDomainNames = [
+          "olivorta.com"
+        ];
+
         group = "nginx";
         dnsProvider = "cloudflare";
         environmentFile = "/var/lib/cloudflare.txt";
