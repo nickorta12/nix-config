@@ -40,6 +40,7 @@ in {
       iftop
       ipcalc
       jq
+      jless
       markitdown
       neofetch
       nmap
