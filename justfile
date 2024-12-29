@@ -1,8 +1,8 @@
 nh-build:
-    nh os build . -- --show-trace
+    nh os build . -- --show-trace --accept-flake-config
 
 nh-switch:
-    nh os switch . -- --show-trace
+    nh os switch . -- --show-trace --accept-flake-config
 
 update:
     nix flake update

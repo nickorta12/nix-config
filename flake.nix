@@ -38,6 +38,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
+    };
     markitdown = {
       url = "github:nickorta12/markitdown-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -121,5 +125,10 @@
     };
 
     overlays = import ./overlays;
+  };
+
+  nixConfig = {
+    extra-substituters = ["https://ghostty.cachix.org"];
+    extra-trusted-public-keys = ["ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
   };
 }
