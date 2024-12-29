@@ -4,6 +4,10 @@
   isLinux,
   ...
 }: {
+  imports = [
+    ../ghostty
+  ];
+
   home.packages = with pkgs; [
     bitwarden
     obsidian

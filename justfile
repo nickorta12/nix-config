@@ -7,6 +7,9 @@ nh-switch:
 update:
     nix flake update
 
+update-nvim:
+    nix flake update nickvim
+
 deploy:
     colmena apply
 
