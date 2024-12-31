@@ -50,6 +50,17 @@
         }
       ];
     }
+    {
+      "Documents" = [
+        {
+          "Paperless" = {
+            description = "Document management system for physical documents";
+            href = "https://paperless.olivorta.com";
+            icon = "paperless-ngx";
+          };
+        }
+      ];
+    }
   ];
 
   sops.secrets.homepage = {

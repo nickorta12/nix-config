@@ -4,5 +4,6 @@
     ./homepage.nix
     ./jellyfin.nix
     ./changedetection.nix
+    ./paperless.nix
   ];
 }
