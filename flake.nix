@@ -43,6 +43,12 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs-unstable.follows = "nixpkgs";

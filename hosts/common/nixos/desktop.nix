@@ -6,7 +6,8 @@
     fractal
     # IRC client
     halloy
-    thunderbird
+    # Email
+    geary
     obsidian
     # Games
     # lutris
@@ -17,9 +18,6 @@
 
     # Gnome
     dconf-editor
-
-    # Misc
-    planify
   ];
   # Enable CUPS to print documents.
   services.printing.enable = true;
