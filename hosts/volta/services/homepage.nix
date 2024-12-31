@@ -60,8 +60,7 @@
             widget = {
               type = "paperlessngx";
               url = "https://paperless.olivorta.com";
-              username = "admin";
-              password = "{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}";
+              key = "{{HOMEPAGE_VAR_PAPERLESS_API_KEY}}";
             };
           };
         }
