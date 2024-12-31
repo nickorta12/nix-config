@@ -1,3 +1,4 @@
+# Docs at https://gethomepage.dev/
 {
   config,
   self,
@@ -32,6 +33,18 @@
               url = "https://freshrss.olivorta.com";
               username = "norta";
               password = "{{HOMEPAGE_VAR_FRESHRSS_PASSWORD}}";
+            };
+          };
+        }
+        {
+          "ChangeDetection" = {
+            description = "Detect changes in websites";
+            href = "https://change.olivorta.com";
+            icon = "changedetection-io";
+            widget = {
+              type = "changedetectionio";
+              url = "https://change.olivorta.com";
+              key = "{{HOMEPAGE_VAR_CHANGEDETECTION_API_KEY}}";
             };
           };
         }

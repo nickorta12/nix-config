@@ -6,4 +6,10 @@
       patches = [./todoist.patch];
     });
   };
+
+  changedetection = final: prev: {
+    changedetection-io = prev.changedetection-io.overrideAttrs (oldAttrs: {
+      propagatedBuildInputs = oldAttrs.propagatedBuildInputs ++ [prev.python3.pkgs.extruct];
+    });
+  };
 }
