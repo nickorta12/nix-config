@@ -2,7 +2,7 @@ let
   stevenBlack = "https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn/hosts";
   ip = "10.25.0.3";
   ipNet = "${ip}/24";
-  dnsmasq = "10.25.0.2";
+  dnsmasq = "10.25.0.4";
 in {
   containers.blocky = {
     autoStart = true;
