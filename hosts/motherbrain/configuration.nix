@@ -49,7 +49,7 @@
     swayfx
 
     # Virtualization
-    quickemu
+    # quickemu
     virt-manager
     virt-viewer
     spice

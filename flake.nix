@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
@@ -18,7 +19,11 @@
     };
     gclone = {
       url = "github:nickorta12/gclone";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+    markitdown = {
+      url = "github:nickorta12/markitdown-flake";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nh-darwin = {
       url = "github:ToyVo/nh_darwin";
@@ -41,10 +46,6 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs-unstable.follows = "nixpkgs";
-    };
-    markitdown = {
-      url = "github:nickorta12/markitdown-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     nickvim = {
       url = "github:nickorta12/nvim";

@@ -2,18 +2,18 @@
   environment.systemPackages = with pkgs; [
     bitwarden
     # Matrix clients
-    element-desktop-wayland
+    element-desktop
     fractal
     # IRC client
     halloy
     thunderbird
     obsidian
     # Games
-    lutris
-    heroic
-    bottles
-    factoriolab
-    yafc-ce
+    # lutris
+    #heroic
+    # bottles
+    # factoriolab
+    # yafc-ce
 
     # Gnome
     dconf-editor

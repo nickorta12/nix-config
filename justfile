@@ -5,7 +5,7 @@ nh-switch:
     nh os switch . -- --show-trace --accept-flake-config
 
 update:
-    nix flake update
+    nix flake update --accept-flake-config
 
 update-nvim:
     nix flake update nickvim
