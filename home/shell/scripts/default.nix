@@ -42,5 +42,6 @@
     jqless = "jq -C | less -R";
     lg = "lazygit";
     cdc = "cd ~/code";
+    ariadl = "aria2c -j12 -x12 -s12 -k1M";
   };
 }
