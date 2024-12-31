@@ -5,7 +5,8 @@ in {
   services.changedetection-io = {
     enable = true;
     behindProxy = true;
-    webDriverSupport = true;
+    # TODO: Issues with podman dns
+    #webDriverSupport = true;
     baseURL = url;
   };
 

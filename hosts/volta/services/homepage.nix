@@ -57,6 +57,12 @@
             description = "Document management system for physical documents";
             href = "https://paperless.olivorta.com";
             icon = "paperless-ngx";
+            widget = {
+              type = "paperlessngx";
+              url = "https://paperless.olivorta.com";
+              username = "admin";
+              password = "{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}";
+            };
           };
         }
       ];
