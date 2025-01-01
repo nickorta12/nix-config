@@ -365,11 +365,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1735621410,
-        "narHash": "sha256-kKk9g4Kba/p3rAGvWsaeBQsUW4G4pDqIH1QQZESiAqA=",
+        "lastModified": 1735767330,
+        "narHash": "sha256-JaeJyxhjPoZ3JTbvhZzFhDfo0ugNeTFvn69/J21JYn4=",
         "owner": "nickorta12",
         "repo": "nvim",
-        "rev": "b523633b16cd3135881bedc44b264b4bf4fec344",
+        "rev": "4407a6876aadf8951333892ccbcd732a17d158d6",
         "type": "github"
       },
       "original": {
